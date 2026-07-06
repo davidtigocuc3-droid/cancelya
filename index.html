@@ -1,0 +1,3329 @@
+<html lang="es"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CancelYa — Cancela tu plan de Claro, Movistar o Tigo sin complicaciones</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&amp;family=DM+Serif+Display:ital@0;1&amp;family=DM+Sans:wght@300;400;500&amp;display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0B1B3F;
+    --navy-mid: #142860;
+    --teal: #00C9A7;
+    --teal-dark: #00A888;
+    --amber: #FFB800;
+    --red-soft: #FF5A5A;
+    --cream: #F5F3EE;
+    --cream-dark: #EAE7DF;
+    --text-dark: #0B1B3F;
+    --text-mid: #4A5568;
+    --text-light: #8896A8;
+    --white: #FFFFFF;
+    --border: rgba(11,27,63,0.12);
+    --radius: 16px;
+    --radius-sm: 10px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    font-size: 16px;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Sora', sans-serif;
+    line-height: 1.2;
+  }
+
+  /* ────────────────────────────── NAV ────────────────────────────── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(11,27,63,0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+.logo {
+    font-family: 'Sora', sans-serif;
+    font-weight: 900;
+    font-size: 1.6rem;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: -1px;
+  }
+
+  .logo span { color: var(--teal); }
+
+  nav a.nav-link {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: color 0.2s;
+    margin-left: 2rem;
+  }
+
+  nav a.nav-link:hover { color: var(--teal); }
+
+  .nav-cta {
+    background: var(--teal);
+    color: var(--navy) !important;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-weight: 700 !important;
+    font-size: 0.875rem !important;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s !important;
+    margin-left: 2rem !important;
+    box-shadow: 0 4px 24px rgba(0,201,167,0.3);
+  }
+
+  .nav-cta:hover {
+    background: var(--teal-dark) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 32px rgba(0,201,167,0.4) !important;
+  }
+
+  .nav-cambio {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: linear-gradient(135deg, #22d3ee, #3b82f6);
+    color: #000 !important;
+    font-family: 'Sora', sans-serif;
+    font-weight: 700 !important;
+    font-size: 0.85rem !important;
+    padding: 8px 20px !important;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-left: 0.8rem !important;
+    transition: transform 0.2s, box-shadow 0.2s !important;
+    box-shadow: 0 4px 24px rgba(34,211,238,0.3);
+    white-space: nowrap;
+  }
+  .nav-cambio:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 32px rgba(34,211,238,0.45) !important;
+  }
+
+  /* ────────────────────────────── HERO ────────────────────────────── */
+  .hero {
+    background: var(--navy);
+    color: var(--white);
+    min-height: 92vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 100px 5% 80px;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 75% 40%, rgba(0,201,167,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 10% 80%, rgba(20,40,96,0.8) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .badge-top {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0,201,167,0.15);
+    border: 1px solid rgba(0,201,167,0.35);
+    color: var(--teal);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 50px;
+    margin-bottom: 1.5rem;
+  }
+
+  .badge-dot {
+    width: 7px;
+    height: 7px;
+    background: var(--teal);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.7); }
+  }
+
+  .hero h1 {
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    margin-bottom: 1.5rem;
+    color: var(--white);
+    line-height: 1.1;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--teal);
+    font-family: 'DM Serif Display', serif;
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.72);
+    max-width: 520px;
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .cta-block {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--teal);
+    color: var(--navy);
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    padding: 16px 32px;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 24px rgba(0,201,167,0.3);
+  }
+
+  .btn-primary:hover {
+    background: var(--teal-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0,201,167,0.4);
+  }
+
+  .btn-primary svg { width: 20px; height: 20px; flex-shrink: 0; }
+
+  .trust-micro {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: rgba(255,255,255,0.55);
+    font-size: 0.82rem;
+  }
+
+  .trust-micro svg { color: var(--teal); flex-shrink: 0; }
+
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 24px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 380px;
+    backdrop-filter: blur(8px);
+  }
+
+  .hero-card-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--teal);
+    margin-bottom: 1.2rem;
+  }
+
+  .operator-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.85rem 1rem;
+    background: rgba(255,255,255,0.06);
+    border-radius: var(--radius-sm);
+    margin-bottom: 0.6rem;
+    border: 1px solid rgba(255,255,255,0.07);
+    transition: background 0.2s;
+  }
+
+  .operator-row:hover { background: rgba(255,255,255,0.1); }
+
+  .op-icon {
+    width: 38px; height: 38px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+  }
+
+  .op-claro { background: #E30613; color: #fff; }
+  .op-movistar { background: #009900; color: #fff; }
+  .op-tigo { background: #00B0E8; color: #fff; }
+
+  .op-info { flex: 1; }
+  .op-name { font-weight: 700; font-size: 0.9rem; color: var(--white); }
+  .op-detail { font-size: 0.75rem; color: rgba(255,255,255,0.45); }
+
+  .op-status {
+    font-size: 0.72rem;
+    font-weight: 700;
+    background: rgba(0,201,167,0.15);
+    color: var(--teal);
+    padding: 3px 10px;
+    border-radius: 50px;
+  }
+
+  .hero-stat-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.7rem;
+    margin-top: 1.2rem;
+  }
+
+  .hero-stat {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 0.8rem;
+    text-align: center;
+  }
+
+  .hero-stat .num {
+    display: block;
+    font-family: 'Sora', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--teal);
+    line-height: 1;
+  }
+
+  .hero-stat .lbl {
+    display: block;
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.45);
+    margin-top: 4px;
+  }
+
+  /* ────────────────────────────── LOGOS ────────────────────────────── */
+  .logos-bar {
+    background: var(--navy-mid);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    padding: 1.2rem 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .logos-bar span {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-right: 1rem;
+  }
+
+  .operator-pill {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.75);
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 6px 18px;
+    border-radius: 50px;
+    letter-spacing: 0.5px;
+  }
+
+  .normativa-pill {
+    background: rgba(0,201,167,0.12);
+    border: 1px solid rgba(0,201,167,0.25);
+    color: var(--teal);
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 6px 18px;
+    border-radius: 50px;
+    letter-spacing: 0.5px;
+  }
+
+  /* ────────────────────────────── SECTIONS ────────────────────────────── */
+  section { padding: 90px 5%; }
+
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+
+  .section-tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--teal-dark);
+    background: rgba(0,168,136,0.1);
+    border: 1px solid rgba(0,168,136,0.22);
+    padding: 4px 14px;
+    border-radius: 50px;
+    margin-bottom: 1.2rem;
+  }
+
+  .section-h2 {
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: var(--navy);
+    margin-bottom: 1rem;
+    line-height: 1.15;
+  }
+
+  .section-h2 em {
+    font-style: italic;
+    font-family: 'DM Serif Display', serif;
+    color: var(--teal-dark);
+    font-weight: 400;
+  }
+
+  .section-sub {
+    font-size: 1.05rem;
+    color: var(--text-mid);
+    max-width: 620px;
+    line-height: 1.7;
+    margin-bottom: 3rem;
+  }
+
+  /* ────────────────────────────── PAIN ────────────────────────────── */
+  .pain-section { background: var(--navy); }
+
+  .pain-section .section-h2 { color: var(--white); }
+  .pain-section .section-sub { color: rgba(255,255,255,0.6); }
+  .pain-section .section-tag { color: #FF8585; background: rgba(255,90,90,0.12); border-color: rgba(255,90,90,0.25); }
+
+  .pain-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .pain-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius);
+    padding: 1.6rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .pain-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--red-soft), rgba(255,90,90,0));
+  }
+
+  .pain-card:hover {
+    border-color: rgba(255,90,90,0.25);
+    background: rgba(255,90,90,0.04);
+  }
+
+  .pain-icon {
+    width: 44px; height: 44px;
+    background: rgba(255,90,90,0.1);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+  }
+
+  .pain-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+
+  .pain-card p {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.6;
+  }
+
+  /* ────────────────────────────── HOW IT WORKS ────────────────────────────── */
+  .steps-section { background: var(--cream); }
+
+  .steps-track {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    position: relative;
+  }
+
+  .steps-track::before {
+    content: '';
+    position: absolute;
+    top: 36px;
+    left: calc(16.66% + 1.5rem);
+    right: calc(16.66% + 1.5rem);
+    height: 2px;
+    background: linear-gradient(90deg, var(--teal), var(--teal-dark));
+    z-index: 0;
+  }
+
+  .step-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem 1.5rem 1.75rem;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .step-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(11,27,63,0.1); }
+
+  .step-num {
+    width: 52px; height: 52px;
+    background: var(--navy);
+    color: var(--teal);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Sora', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin: 0 auto 1.2rem;
+    position: relative;
+    border: 3px solid var(--cream);
+    box-shadow: 0 0 0 3px var(--teal);
+  }
+
+  .step-card h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.6rem;
+  }
+
+  .step-card p {
+    font-size: 0.88rem;
+    color: var(--text-mid);
+    line-height: 1.65;
+  }
+
+  .step-card .step-tag {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--teal-dark);
+  }
+
+  /* ────────────────────────────── SERVICES ────────────────────────────── */
+  .services-section { background: var(--white); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+    background: var(--white);
+  }
+
+  .service-card:hover {
+    border-color: var(--teal);
+    transform: translateY(-4px);
+  }
+
+  .service-card.featured {
+    border-color: var(--teal);
+    background: var(--cream);
+  }
+
+  .service-badge {
+    position: absolute;
+    top: 1.2rem; right: 1.2rem;
+    background: var(--teal);
+    color: var(--navy);
+    font-size: 0.68rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 4px 10px;
+    border-radius: 50px;
+  }
+
+  .service-icon-wrap {
+    width: 54px; height: 54px;
+    background: var(--navy);
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.3rem;
+    font-size: 1.5rem;
+  }
+
+  .service-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.6rem;
+  }
+
+  .service-card p {
+    font-size: 0.88rem;
+    color: var(--text-mid);
+    margin-bottom: 1.2rem;
+    line-height: 1.65;
+  }
+
+  .service-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .service-features li {
+    font-size: 0.82rem;
+    color: var(--text-mid);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .service-features li::before {
+    content: '✓';
+    color: var(--teal-dark);
+    font-weight: 800;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+  }
+
+  /* ────────────────────────────── WHY US ────────────────────────────── */
+  .why-section { background: var(--cream); }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .why-list { display: flex; flex-direction: column; gap: 1.4rem; }
+
+  .why-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .why-icon {
+    width: 46px; height: 46px;
+    background: var(--navy);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+
+  .why-text h4 {
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.3rem;
+  }
+
+  .why-text p {
+    font-size: 0.86rem;
+    color: var(--text-mid);
+    line-height: 1.6;
+  }
+
+  .why-panel {
+    background: var(--navy);
+    border-radius: 24px;
+    padding: 2.5rem;
+    color: var(--white);
+  }
+
+  .crc-badge {
+    background: rgba(0,201,167,0.12);
+    border: 1px solid rgba(0,201,167,0.3);
+    border-radius: 12px;
+    padding: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .crc-badge .crc-title {
+    font-family: 'Sora', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--teal);
+    margin-bottom: 0.4rem;
+  }
+
+  .crc-badge p {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.55;
+  }
+
+  .why-panel p {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.65;
+    margin-bottom: 1rem;
+  }
+
+  .legal-art {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .legal-art-item {
+    flex: 1;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .legal-art-item .lnum {
+    display: block;
+    font-family: 'Sora', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--teal);
+  }
+
+  .legal-art-item .llbl {
+    display: block;
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.45);
+    margin-top: 3px;
+  }
+
+  /* ────────────────────────────── PRICING ────────────────────────────── */
+  .pricing-section { background: var(--white); }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .price-card {
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem;
+    text-align: center;
+    background: var(--white);
+    transition: border-color 0.2s, transform 0.2s;
+    position: relative;
+  }
+
+  .price-card:hover { transform: translateY(-4px); }
+
+  .price-card.featured {
+    border-color: var(--teal);
+    background: var(--navy);
+  }
+
+  .price-card.featured h3,
+  .price-card.featured p,
+  .price-card.featured .price-amount,
+  .price-card.featured .price-period { color: var(--white) !important; }
+
+  .price-card.featured .price-period { color: rgba(255,255,255,0.55) !important; }
+
+  .price-pop-badge {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--teal);
+    color: var(--navy);
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 4px 16px;
+    border-radius: 50px;
+    white-space: nowrap;
+  }
+
+  .price-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+  }
+
+  .price-amount {
+    font-family: 'Sora', sans-serif;
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1;
+    margin: 1rem 0 0.3rem;
+  }
+
+  .price-period {
+    font-size: 0.82rem;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+  }
+
+  .price-features {
+    list-style: none;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    margin-bottom: 1.8rem;
+  }
+
+  .price-features li {
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .price-card:not(.featured) .price-features li { color: var(--text-mid); }
+  .price-card.featured .price-features li { color: rgba(255,255,255,0.75); }
+
+  .price-features li::before {
+    content: '✓';
+    font-weight: 800;
+    color: var(--teal);
+    flex-shrink: 0;
+  }
+
+  .btn-price {
+    display: block;
+    width: 100%;
+    padding: 13px;
+    border-radius: var(--radius-sm);
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-price-primary {
+    background: var(--teal);
+    color: var(--navy);
+  }
+
+  .btn-price-primary:hover { background: var(--teal-dark); transform: translateY(-1px); }
+
+  .btn-price-secondary {
+    background: rgba(11,27,63,0.08);
+    color: var(--navy);
+  }
+
+  .btn-price-secondary:hover { background: rgba(11,27,63,0.14); }
+
+  .pricing-guarantee {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 0.85rem;
+    color: var(--text-mid);
+  }
+
+  .pricing-guarantee strong { color: var(--navy); }
+
+  /* ────────────────────────────── FAQ ────────────────────────────── */
+  .faq-section { background: var(--cream); }
+
+  .faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+
+  .faq-item:hover { border-color: var(--teal); }
+
+  .faq-item h4 {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.65rem;
+    padding-right: 1.5rem;
+    position: relative;
+    line-height: 1.4;
+  }
+
+  .faq-item p {
+    font-size: 0.84rem;
+    color: var(--text-mid);
+    line-height: 1.65;
+  }
+
+  .faq-item p strong { color: var(--teal-dark); }
+
+  /* ────────────────────────────── CTA FINAL ────────────────────────────── */
+  .cta-final {
+    background: var(--navy);
+    padding: 90px 5%;
+    text-align: center;
+  }
+
+  .cta-final h2 {
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -1px;
+    margin-bottom: 1rem;
+  }
+
+  .cta-final h2 em {
+    font-style: italic;
+    color: var(--teal);
+    font-family: 'DM Serif Display', serif;
+    font-weight: 400;
+  }
+
+  .cta-final p {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.6);
+    max-width: 560px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.7;
+  }
+
+  .cta-final-row {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-white {
+    background: var(--white);
+    color: var(--navy);
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 15px 32px;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-white:hover { background: var(--cream); transform: translateY(-2px); }
+
+  .btn-ghost {
+    background: transparent;
+    color: rgba(255,255,255,0.8);
+    font-family: 'Sora', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 15px 32px;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.2);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.05); }
+
+  /* ────────────────────────────── FOOTER ────────────────────────────── */
+  footer {
+    background: #060E20;
+    color: rgba(255,255,255,0.5);
+    padding: 3rem 5% 2rem;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  footer .logo { font-size: 1.2rem; display: block; margin-bottom: 0.8rem; }
+
+  .footer-desc {
+    font-size: 0.82rem;
+    line-height: 1.7;
+    max-width: 320px;
+  }
+
+  .footer-col h5 {
+    font-family: 'Sora', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+  }
+
+  .footer-col a, .footer-col span {
+    display: block;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.45);
+    text-decoration: none;
+    margin-bottom: 0.6rem;
+    transition: color 0.2s;
+  }
+
+  .footer-col a:hover { color: var(--teal); }
+
+  .footer-bottom {
+    max-width: 1100px;
+    margin: 2rem auto 0;
+    font-size: 0.75rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .footer-disclaimer {
+    margin-top: 1rem;
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.22);
+    line-height: 1.65;
+  }
+
+  /* ────────────────────────────── RESPONSIVE ────────────────────────────── */
+  @media (max-width: 768px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-visual { display: none; }
+    .steps-track { grid-template-columns: 1fr; }
+    .steps-track::before { display: none; }
+    .why-grid { grid-template-columns: 1fr; }
+    .faq-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    nav a.nav-link { display: none; }
+    .logos-bar span { display: none; }
+  }
+
+  /* ────────────────────────────── ANIMATIONS ────────────────────────────── */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-content > * {
+    animation: fadeInUp 0.6s ease both;
+  }
+
+  .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-content > *:nth-child(2) { animation-delay: 0.25s; }
+  .hero-content > *:nth-child(3) { animation-delay: 0.38s; }
+  .hero-content > *:nth-child(4) { animation-delay: 0.5s; }
+
+  .hero-card {
+    animation: fadeInUp 0.7s ease 0.45s both;
+  }
+
+  /* ═══════════════════ MOTION INTENSITY: HIGH ═══════════════════ */
+
+  /* ── Scroll reveal base states ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(44px);
+    transition: opacity 0.72s cubic-bezier(.22,1,.36,1), transform 0.72s cubic-bezier(.22,1,.36,1);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  .reveal-left  { opacity: 0; transform: translateX(-52px); transition: opacity 0.72s cubic-bezier(.22,1,.36,1), transform 0.72s cubic-bezier(.22,1,.36,1); }
+  .reveal-right { opacity: 0; transform: translateX(52px);  transition: opacity 0.72s cubic-bezier(.22,1,.36,1), transform 0.72s cubic-bezier(.22,1,.36,1); }
+  .reveal-left.visible, .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+  .reveal-scale { opacity: 0; transform: scale(0.88); transition: opacity 0.65s cubic-bezier(.22,1,.36,1), transform 0.65s cubic-bezier(.22,1,.36,1); }
+  .reveal-scale.visible { opacity: 1; transform: scale(1); }
+
+  /* Stagger delays */
+  .d1 { transition-delay: 0.06s !important; }
+  .d2 { transition-delay: 0.16s !important; }
+  .d3 { transition-delay: 0.26s !important; }
+  .d4 { transition-delay: 0.36s !important; }
+  .d5 { transition-delay: 0.46s !important; }
+
+  /* ── Hero particle canvas ── */
+  #hero-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Máscara circular — difumina los bordes dentro del hero */
+  #hero-canvas-mask {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    background: radial-gradient(
+      ellipse 65% 60% at 50% 50%,
+      transparent 30%,
+      transparent 45%,
+      rgba(11,27,63,0.55) 65%,
+      rgba(11,27,63,0.92) 82%,
+      var(--navy) 100%
+    );
+  }
+
+  /* ── Floating hero card ── */
+  .float-card {
+    animation: floatY 4s ease-in-out infinite;
+  }
+  @keyframes floatY {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-10px); }
+  }
+
+  /* ── Shine sweep on primary buttons ── */
+  .btn-primary, .btn-price-primary {
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-primary::after, .btn-price-primary::after {
+    content: '';
+    position: absolute;
+    top: -50%; left: -75%;
+    width: 50%; height: 200%;
+    background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.22) 50%, transparent 70%);
+    transform: skewX(-20deg);
+    animation: shineSweep 3.5s ease-in-out infinite;
+    pointer-events: none;
+  }
+  @keyframes shineSweep {
+    0%   { left: -75%; }
+    35%  { left: 125%; }
+    100% { left: 125%; }
+  }
+
+  /* ── Operator rows slide in ── */
+  @keyframes slideInRow {
+    from { opacity: 0; transform: translateX(22px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  .operator-row:nth-child(2) { animation: slideInRow 0.55s cubic-bezier(.22,1,.36,1) 0.65s both; }
+  .operator-row:nth-child(3) { animation: slideInRow 0.55s cubic-bezier(.22,1,.36,1) 0.85s both; }
+  .operator-row:nth-child(4) { animation: slideInRow 0.55s cubic-bezier(.22,1,.36,1) 1.05s both; }
+
+  /* ── Step number spin-in ── */
+  @keyframes spinIn {
+    from { opacity: 0; transform: rotate(-180deg) scale(0.5); }
+    to   { opacity: 1; transform: rotate(0deg) scale(1); }
+  }
+  .step-card:nth-child(1) .step-num { animation: spinIn 0.7s cubic-bezier(.34,1.56,.64,1) 0.2s both; }
+  .step-card:nth-child(2) .step-num { animation: spinIn 0.7s cubic-bezier(.34,1.56,.64,1) 0.45s both; }
+  .step-card:nth-child(3) .step-num { animation: spinIn 0.7s cubic-bezier(.34,1.56,.64,1) 0.7s both; }
+
+  /* ── Hero stat counter pop ── */
+  @keyframes statPop {
+    0%   { transform: scale(0.5); opacity: 0; }
+    70%  { transform: scale(1.15); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  .hero-stat:nth-child(1) .num { animation: statPop 0.6s cubic-bezier(.34,1.56,.64,1) 1.1s both; }
+  .hero-stat:nth-child(2) .num { animation: statPop 0.6s cubic-bezier(.34,1.56,.64,1) 1.25s both; }
+  .hero-stat:nth-child(3) .num { animation: statPop 0.6s cubic-bezier(.34,1.56,.64,1) 1.4s both; }
+  .hero-stat:nth-child(4) .num { animation: statPop 0.6s cubic-bezier(.34,1.56,.64,1) 1.55s both; }
+
+  /* ── Logos ticker ── */
+  .logos-bar { overflow: hidden; }
+  .logos-inner {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    animation: ticker 20s linear infinite;
+    white-space: nowrap;
+    width: max-content;
+  }
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  .logos-inner:hover { animation-play-state: paused; }
+
+  /* ── Pain icon wiggle on hover ── */
+  @keyframes wiggle {
+    0%,100% { transform: rotate(0deg); }
+    20% { transform: rotate(-12deg); }
+    40% { transform: rotate(10deg); }
+    60% { transform: rotate(-6deg); }
+    80% { transform: rotate(4deg); }
+  }
+  .pain-icon { cursor: default; }
+  .pain-icon:hover { animation: wiggle 0.5s ease; }
+
+  /* ── Section tag bounce on hover ── */
+  @keyframes tagBounce {
+    0%,100% { transform: translateY(0); }
+    40% { transform: translateY(-5px); }
+    60% { transform: translateY(-2px); }
+  }
+  .section-tag { cursor: default; }
+  .section-tag:hover { animation: tagBounce 0.5s ease; }
+
+  /* ── Teal underline grow on em inside section headings ── */
+  .section-h2 em {
+    position: relative;
+    display: inline-block;
+  }
+  .section-h2 em::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -4px;
+    height: 3px;
+    width: 0%;
+    background: var(--teal);
+    border-radius: 4px;
+    transition: width 1.3s cubic-bezier(.22,1,.36,1) 0.3s;
+  }
+  .em-visible .section-h2 em::after { width: 100%; }
+
+  /* Hero h1 em underline immediate */
+  .hero h1 em { position: relative; }
+  .hero h1 em::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -4px;
+    height: 3px;
+    background: var(--teal);
+    border-radius: 4px;
+    width: 0%;
+    animation: growLine 1.2s cubic-bezier(.22,1,.36,1) 0.9s forwards;
+  }
+  @keyframes growLine { to { width: 100%; } }
+
+  /* ── 3D tilt on hover for pain cards ── */
+  .tilt-hover { will-change: transform; }
+
+  /* ── Cursor blink on CTA final ── */
+  .cursor-blink::after {
+    content: '|';
+    color: var(--teal);
+    animation: blink 1s step-end infinite;
+    margin-left: 2px;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+  /* ── Why panel ambient glow ── */
+  .why-panel { position: relative; overflow: hidden; }
+  .why-panel::before {
+    content: '';
+    position: absolute;
+    top: -60%; left: -40%;
+    width: 180%; height: 200%;
+    background: radial-gradient(ellipse at center, rgba(0,201,167,0.07) 0%, transparent 60%);
+    animation: panelGlow 7s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+  @keyframes panelGlow {
+    from { transform: translate(0,0); }
+    to   { transform: translate(15%,10%); }
+  }
+
+  /* ── Nav blur intensifies on scroll (JS adds class) ── */
+  nav.scrolled {
+    background: rgba(6,14,32,0.98) !important;
+    backdrop-filter: blur(20px) !important;
+  }
+
+
+  /* ════════════════════ FORMULARIO MULTISTEP ════════════════════ */
+
+  .form-section {
+    background: var(--navy);
+    padding: 90px 5%;
+    position: relative;
+    overflow: hidden;
+  }
+  .form-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 80% 20%, rgba(0,201,167,0.07) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .form-header { text-align: center; margin-bottom: 3rem; }
+  .form-header .section-h2 { color: var(--white); }
+  .form-header .section-sub { color: rgba(255,255,255,0.6); margin: 0 auto 0; }
+  .form-header .section-tag { color: var(--teal); background: rgba(0,201,167,0.12); border-color: rgba(0,201,167,0.3); }
+
+  /* ── Progress ── */
+  .form-progress-wrap {
+    max-width: 640px;
+    margin: 0 auto 2.5rem;
+  }
+  .form-progress-track {
+    height: 4px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 4px;
+    margin-bottom: 1.2rem;
+    overflow: hidden;
+  }
+  .form-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--teal), #00B0E8);
+    border-radius: 4px;
+    transition: width 0.5s cubic-bezier(.22,1,.36,1);
+    width: 25%;
+  }
+  .form-steps-labels {
+    display: flex;
+    justify-content: space-between;
+  }
+  .fstep-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    opacity: 0.4;
+    transition: opacity 0.3s;
+    cursor: default;
+  }
+  .fstep-label.active, .fstep-label.done { opacity: 1; }
+  .fstep-dot {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    border: 2px solid rgba(255,255,255,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Sora', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.5);
+    transition: background 0.3s, border-color 0.3s, color 0.3s;
+  }
+  .fstep-label.active .fstep-dot {
+    background: var(--teal);
+    border-color: var(--teal);
+    color: var(--navy);
+    box-shadow: 0 0 0 4px rgba(0,201,167,0.2);
+  }
+  .fstep-label.done .fstep-dot {
+    background: rgba(0,201,167,0.2);
+    border-color: var(--teal);
+    color: var(--teal);
+  }
+  .fstep-label.done .fstep-dot::before { content: '✓'; }
+  .fstep-label.done .fstep-dot span { display: none; }
+  .fstep-name {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.5px;
+  }
+  .fstep-label.active .fstep-name { color: var(--teal); }
+  .fstep-label.done .fstep-name { color: rgba(255,255,255,0.7); }
+
+  /* ── Form card ── */
+  .form-card {
+    max-width: 700px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 24px;
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(8px);
+  }
+
+  /* ── Step visibility ── */
+  .form-step { display: none; }
+  .form-step.active {
+    display: block;
+    animation: stepIn 0.4s cubic-bezier(.22,1,.36,1) both;
+  }
+  @keyframes stepIn {
+    from { opacity: 0; transform: translateX(24px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes stepInBack {
+    from { opacity: 0; transform: translateX(-24px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  .form-step.active.back { animation: stepInBack 0.4s cubic-bezier(.22,1,.36,1) both; }
+
+  /* ── Step header ── */
+  .form-step-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .form-step-icon {
+    width: 48px; height: 48px;
+    background: rgba(0,201,167,0.15);
+    border: 1px solid rgba(0,201,167,0.3);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+  }
+  .form-step-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+  }
+  .form-step-sub {
+    font-size: 0.84rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.5;
+  }
+
+  /* ── Form fields ── */
+  .form-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  @media (max-width: 580px) { .form-grid-2 { grid-template-columns: 1fr; } }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 1rem;
+  }
+  .form-field label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 0.3px;
+  }
+  .form-field input,
+  .form-field textarea,
+  .form-field select {
+    background: rgba(255,255,255,0.07);
+    border: 1.5px solid rgba(255,255,255,0.12);
+    border-radius: var(--radius-sm);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    padding: 11px 14px;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+    width: 100%;
+  }
+  .form-field input::placeholder,
+  .form-field textarea::placeholder { color: rgba(255,255,255,0.25); }
+  .form-field input:focus,
+  .form-field textarea:focus,
+  .form-field select:focus {
+    border-color: var(--teal);
+    background: rgba(0,201,167,0.06);
+  }
+  .form-field input.error,
+  .form-field select.error { border-color: var(--red-soft); }
+  .form-field textarea { resize: vertical; min-height: 80px; }
+
+  /* Select custom ── */
+  .select-wrap { position: relative; }
+  .select-wrap select { appearance: none; padding-right: 2.5rem; cursor: pointer; }
+  .select-arrow {
+    position: absolute;
+    right: 12px; top: 50%;
+    transform: translateY(-50%);
+    width: 16px; height: 16px;
+    color: rgba(255,255,255,0.4);
+    pointer-events: none;
+  }
+  .select-wrap select option { background: var(--navy); color: var(--white); }
+
+  /* Input prefix ── */
+  .input-prefix-wrap { display: flex; gap: 0; }
+  .input-prefix {
+    background: rgba(255,255,255,0.08);
+    border: 1.5px solid rgba(255,255,255,0.12);
+    border-right: none;
+    border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+    padding: 11px 12px;
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.6);
+    white-space: nowrap;
+    display: flex; align-items: center;
+  }
+  .input-prefix-wrap input {
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    flex: 1;
+  }
+
+  .help-text { font-size: 0.75rem; color: rgba(255,255,255,0.35); margin-top: 2px; }
+  .field-err { font-size: 0.75rem; color: var(--red-soft); min-height: 1.1em; }
+
+  /* ── Operator selector ── */
+  .operator-selector {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+  }
+  .op-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 1rem 1.4rem;
+    background: rgba(255,255,255,0.05);
+    border: 1.5px solid rgba(255,255,255,0.12);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s, transform 0.15s;
+    flex: 1;
+    min-width: 90px;
+    user-select: none;
+  }
+  .op-btn:hover { background: rgba(255,255,255,0.09); transform: translateY(-2px); }
+  .op-btn.selected {
+    border-color: var(--teal);
+    background: rgba(0,201,167,0.1);
+  }
+  .op-btn-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: 800;
+    font-size: 0.85rem;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .op-btn span { font-size: 0.82rem; font-weight: 600; color: rgba(255,255,255,0.8); }
+  .op-btn.selected span { color: var(--teal); }
+
+  /* ── Service selector ── */
+  .service-selector { display: flex; flex-direction: column; gap: 0.6rem; }
+  .svc-btn {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.9rem 1.2rem;
+    background: rgba(255,255,255,0.05);
+    border: 1.5px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    user-select: none;
+  }
+  .svc-btn:hover { background: rgba(255,255,255,0.08); }
+  .svc-btn.selected { border-color: var(--teal); background: rgba(0,201,167,0.08); }
+  .svc-icon { font-size: 1.2rem; }
+  .svc-label { flex: 1; font-size: 0.9rem; color: rgba(255,255,255,0.8); font-weight: 500; }
+  .svc-btn.selected .svc-label { color: var(--teal); font-weight: 600; }
+  .svc-check {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    border: 2px solid rgba(255,255,255,0.15);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.7rem;
+    color: transparent;
+    transition: all 0.2s;
+  }
+  .svc-btn.selected .svc-check {
+    background: var(--teal);
+    border-color: var(--teal);
+    color: var(--navy);
+    font-weight: 800;
+  }
+
+  /* ── Upload zones ── */
+  .upload-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  .upload-zone-wide { grid-column: 1 / -1; }
+  @media (max-width: 580px) { .upload-grid { grid-template-columns: 1fr; } }
+
+  .upload-zone {
+    border: 2px dashed rgba(255,255,255,0.15);
+    border-radius: var(--radius);
+    padding: 1.5rem 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    position: relative;
+  }
+  .upload-zone:hover {
+    border-color: var(--teal);
+    background: rgba(0,201,167,0.04);
+  }
+  .upload-zone.has-file {
+    border-style: solid;
+    border-color: var(--teal);
+    background: rgba(0,201,167,0.06);
+  }
+  .upload-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+  .upload-label { font-size: 0.85rem; color: rgba(255,255,255,0.7); margin-bottom: 0.3rem; }
+  .upload-hint { font-size: 0.72rem; color: rgba(255,255,255,0.3); }
+
+  .upload-done {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .upload-check {
+    width: 32px; height: 32px;
+    background: var(--teal);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+    color: var(--navy);
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+  .upload-fname {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.8);
+    word-break: break-all;
+    flex: 1;
+    text-align: left;
+  }
+  .upload-remove {
+    background: rgba(255,90,90,0.15);
+    border: 1px solid rgba(255,90,90,0.3);
+    color: var(--red-soft);
+    border-radius: 6px;
+    padding: 3px 8px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    flex-shrink: 0;
+  }
+  .upload-remove:hover { background: rgba(255,90,90,0.28); }
+
+  .upload-note {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius-sm);
+    padding: 0.9rem 1rem;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  /* ── Summary ── */
+  .summary-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+  }
+  .summary-section { padding: 1.2rem 1.5rem; }
+  .summary-divider { height: 1px; background: rgba(255,255,255,0.08); }
+  .summary-title {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--teal);
+    margin-bottom: 0.9rem;
+  }
+  .summary-grid { display: flex; flex-direction: column; gap: 0.5rem; }
+  .summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.85rem;
+  }
+  .summary-row span { color: rgba(255,255,255,0.45); flex-shrink: 0; }
+  .summary-row strong { color: var(--white); text-align: right; }
+  .summary-docs { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .summary-doc-pill {
+    background: rgba(0,201,167,0.1);
+    border: 1px solid rgba(0,201,167,0.25);
+    color: var(--teal);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 50px;
+  }
+
+  /* ── Habeas check ── */
+  .habeas-check { margin-bottom: 1.5rem; }
+  .check-label {
+    display: flex;
+    gap: 0.9rem;
+    align-items: flex-start;
+    cursor: pointer;
+  }
+  .check-label input[type="checkbox"] { display: none; }
+  .check-box {
+    width: 22px; height: 22px;
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 6px;
+    background: rgba(255,255,255,0.06);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .check-label input:checked + .check-box {
+    background: var(--teal);
+    border-color: var(--teal);
+  }
+  .check-label input:checked + .check-box::after {
+    content: '✓';
+    font-size: 0.8rem;
+    color: var(--navy);
+    font-weight: 800;
+  }
+  .check-text { font-size: 0.82rem; color: rgba(255,255,255,0.55); line-height: 1.6; }
+  .check-text strong { color: rgba(255,255,255,0.8); }
+
+  /* ── Navigation buttons ── */
+  .form-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.8rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    gap: 1rem;
+  }
+  .btn-form-next, .btn-form-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--teal);
+    color: var(--navy);
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 12px 24px;
+    border-radius: var(--radius-sm);
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    margin-left: auto;
+  }
+  .btn-form-next svg, .btn-form-submit svg { width: 18px; height: 18px; flex-shrink: 0; }
+  .btn-form-next:hover, .btn-form-submit:hover { background: var(--teal-dark); transform: translateY(-1px); }
+  .btn-form-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: rgba(255,255,255,0.5);
+    font-family: 'Sora', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 12px 16px;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(255,255,255,0.12);
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-form-back svg { width: 16px; height: 16px; }
+  .btn-form-back:hover { border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.8); }
+
+  /* ── Success ── */
+  .form-success {
+    text-align: center;
+    padding: 2rem 1rem;
+    animation: stepIn 0.5s cubic-bezier(.22,1,.36,1) both;
+  }
+  .success-anim {
+    width: 80px; height: 80px;
+    position: relative;
+    margin: 0 auto 1.5rem;
+  }
+  .success-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 3px solid var(--teal);
+    animation: ringExpand 0.6s cubic-bezier(.22,1,.36,1) both;
+  }
+  @keyframes ringExpand {
+    from { transform: scale(0); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+  }
+  .success-check {
+    position: absolute;
+    inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2rem;
+    color: var(--teal);
+    animation: checkPop 0.4s cubic-bezier(.34,1.56,.64,1) 0.4s both;
+  }
+  @keyframes checkPop { from{transform:scale(0)} to{transform:scale(1)} }
+  .form-success h3 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 0.8rem;
+  }
+  .form-success p { font-size: 0.9rem; color: rgba(255,255,255,0.6); max-width: 420px; margin: 0 auto; line-height: 1.7; }
+  .success-ref {
+    display: inline-block;
+    background: rgba(0,201,167,0.12);
+    border: 1px solid rgba(0,201,167,0.3);
+    color: var(--teal);
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 6px 18px;
+    border-radius: 50px;
+    margin-top: 1rem;
+    font-family: monospace;
+  }
+
+</style>
+<!-- Meta Pixel Code -->
+<script src="https://connect.facebook.net/signals/config/659552121441582?v=2.9.349&amp;r=stable&amp;domain=cancelya.com&amp;hme=f29d86973612db0f0627890a64bdc8c47b471189050b33f2680b7d76997afc9a&amp;ex_m=107%2C208%2C158%2C22%2C73%2C74%2C149%2C69%2C68%2C11%2C167%2C93%2C16%2C141%2C130%2C39%2C76%2C81%2C137%2C163%2C169%2C8%2C4%2C5%2C7%2C6%2C3%2C94%2C104%2C170%2C175%2C222%2C30%2C75%2C234%2C233%2C232%2C23%2C33%2C55%2C106%2C61%2C10%2C64%2C100%2C101%2C102%2C108%2C133%2C31%2C29%2C135%2C136%2C132%2C131%2C159%2C77%2C162%2C160%2C161%2C50%2C60%2C126%2C15%2C166%2C45%2C279%2C280%2C278%2C26%2C27%2C28%2C48%2C150%2C78%2C115%2C18%2C20%2C44%2C40%2C42%2C41%2C86%2C95%2C99%2C113%2C148%2C151%2C46%2C114%2C24%2C21%2C122%2C70%2C36%2C153%2C152%2C154%2C145%2C143%2C25%2C35%2C59%2C112%2C165%2C71%2C17%2C156%2C117%2C84%2C67%2C19%2C88%2C89%2C119%2C87%2C139%2C138%2C142%2C164%2C34%2C293%2C309%2C215%2C204%2C62%2C205%2C203%2C312%2C303%2C52%2C216%2C110%2C134%2C83%2C124%2C54%2C47%2C49%2C116%2C123%2C129%2C128%2C58%2C65%2C63%2C155%2C79%2C80%2C118%2C37%2C32%2C53%2C56%2C103%2C168%2C1%2C127%2C14%2C125%2C12%2C2%2C57%2C96%2C66%2C121%2C92%2C91%2C171%2C172%2C97%2C98%2C9%2C105%2C51%2C146%2C90%2C82%2C72%2C120%2C109%2C43%2C147%2C0%2C85%2C140%2C144%2C157%2C38%2C111%2C13%2C173" async=""></script><script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script><script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '659552121441582');
+fbq('track', 'PageView');
+</script>
+<noscript>
+  <img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=659552121441582&ev=PageView&noscript=1"/>
+</noscript>
+<!-- End Meta Pixel Code --><!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '659552121441582');
+fbq('track', 'PageView');
+</script>
+<noscript>
+  <img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=659552121441582&ev=PageView&noscript=1"/>
+</noscript>
+<!-- End Meta Pixel Code --><!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '659552121441582');
+fbq('track', 'PageView');
+</script>
+<noscript>
+  <img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=659552121441582&ev=PageView&noscript=1"/>
+</noscript>
+<!-- End Meta Pixel Code --><style id="claude-agent-animation-styles">
+      @keyframes claude-pulse {
+        0%, 100% { opacity: 0.6; }
+        50% { opacity: 1; }
+      }
+      #claude-agent-glow-border-inner {
+        animation: claude-pulse 2s ease-in-out infinite;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #claude-agent-glow-border-inner {
+          animation: none;
+        }
+      }
+    </style></head>
+<body>
+
+<!-- ═══════════════════════════════════════════ NAV ═══════════════════════════════════════════ -->
+<nav>
+  <a href="#" class="logo">Cancel<span>Ya</span></a>
+  <div style="display: flex; align-items: center;">
+    <a href="#como-funciona" class="nav-link">Cómo funciona</a>
+    <a href="#servicios" class="nav-link">Servicios</a>
+    <a href="#precios" class="nav-link">Precios</a>
+    <a href="#faq" class="nav-link">FAQ</a>
+    <a href="/cancela" class="nav-link nav-cta">Iniciar trámite</a>
+    <a class="nav-cambio" href="/soluciones-interconet">🔄 Cambio de Operador</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════ HERO ═══════════════════════════════════════════ -->
+<section class="hero">
+  <canvas id="hero-canvas" width="1581" height="764"></canvas>
+  <div id="hero-canvas-mask"></div>
+  <div class="hero-grid">
+    <div class="hero-content">
+      <div class="badge-top">
+        <span class="badge-dot"></span>
+        Tramitación 100% legal bajo normativa CRC
+      </div>
+
+      <h1>Cancela tu plan de Claro, Movistar o Tigo <em>sin filas, sin llamadas y sin trampas.</em></h1>
+
+      <p class="hero-sub">
+        Nos encargamos de todo el trámite legal de cancelación por ti. Nuestros especialistas radican la solicitud formal ante el operador, con respaldo normativo, número de seguimiento y garantía de resultado.
+      </p>
+
+      <div class="cta-block">
+        <a class="btn-primary" href="/formulario-cancelacion" id="cta-hero">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+          Iniciar mi cancelación ahora
+        </a>
+
+        <div class="trust-micro">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          +1500 cancelaciones exitosas · Sin letra pequeña · Pago único
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-card float-card">
+        <div class="hero-card-title">📋 Trámites activos hoy</div>
+
+        <div class="operator-row">
+          <div class="op-icon op-claro">CL</div>
+          <div class="op-info">
+            <div class="op-name">Plan Pospago Claro</div>
+            <div class="op-detail">Cancelación · PQR radicada</div>
+          </div>
+          <span class="op-status">✓ Activo</span>
+        </div>
+
+        <div class="operator-row">
+          <div class="op-icon op-movistar">MV</div>
+          <div class="op-info">
+            <div class="op-name">Internet Hogar Movistar</div>
+            <div class="op-detail">Retiro de servicio</div>
+          </div>
+          <span class="op-status">⏳ En curso</span>
+        </div>
+
+        <div class="operator-row">
+          <div class="op-icon op-tigo">TG</div>
+          <div class="op-info">
+            <div class="op-name">Tigo TV + Internet</div>
+            <div class="op-detail">Cancelación doble servicio</div>
+          </div>
+          <span class="op-status">✓ Activo</span>
+        </div>
+
+        <div class="hero-stat-row">
+          <div class="hero-stat">
+            <span class="num">15</span>
+            <span class="lbl">días hábiles máx.</span>
+          </div>
+          <div class="hero-stat">
+            <span class="num">100%</span>
+            <span class="lbl">respaldo legal CRC</span>
+          </div>
+          <div class="hero-stat">
+            <span class="num">0</span>
+            <span class="lbl">llamadas que hacer</span>
+          </div>
+          <div class="hero-stat">
+            <span class="num">500+</span>
+            <span class="lbl">cancelaciones exitosas</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing-section" id="precios">
+  <div class="section-inner em-visible-target" style="text-align: center;">
+    <div class="section-tag">Tarifas transparentes</div>
+    <h2 class="section-h2">Precio único.<br><em>Sin sorpresas.</em></h2>
+    <p class="section-sub" style="margin: 0 auto 3rem;">Pago único por trámite. Sin mensualidades, sin comisiones ocultas, sin cobros adicionales. Lo que ves es lo que pagas.</p>
+
+          <div class="price-card featured reveal-scale">
+        <div class="price-pop-badge">⚡ Más popular</div>
+        <h3>Trámite de Cancelación Completo</h3>
+        <p style="font-size:0.83rem; color:rgba(255,255,255,0.5);">1 trámite de cancelación</p>
+        <div class="price-amount" style="color:var(--teal);">$39.900</div>
+        <div class="price-period">COP · Pago único</div>
+        <ul class="price-features">
+          <li>1 trámite de cancelación (ej: móvil ó hogar)</li>
+          <li>PQR con fundamentación legal detallada</li>
+          <li>Radicación prioritaria</li>
+          <li>Escalamiento SIC incluido si es necesario</li>
+          <li>Seguimiento hasta confirmación de baja</li>
+          <li>Seguimiento diario del estado del trámite</li>
+          <li>Soporte dedicado por WhatsApp</li>
+          <li>Garantía de Paz y Salvo definitivo del operador</li>
+        </ul>
+        <a class="btn-price btn-price-primary" href="/formulario-cancelacion">Iniciar trámite</a>
+      </div>
+
+     
+
+    <p class="pricing-guarantee">
+      🛡️ <strong>Garantía de radicación:</strong> Si por razones técnicas no podemos radicar tu trámite, te devolvemos el 100% del dinero. Sin preguntas.
+    </p>
+  </div>
+</section>
+
+<!-- LOGOS BAR -->
+<div class="logos-bar">
+  <div class="logos-inner">
+    <span>Operadores que tramitamos &nbsp;</span>
+    <div class="operator-pill">🔴 CLARO</div>
+    <div class="operator-pill">🟢 MOVISTAR</div>
+    <div class="operator-pill">🔵 TIGO</div>
+    <div class="normativa-pill">⚖️ Normativa CRC Colombia</div>
+    <div class="normativa-pill">🛡️ Ley Habeas Data</div>
+    <span style="opacity:.3;padding:0 1.5rem">·</span>
+    <span>Operadores que tramitamos &nbsp;</span>
+    <div class="operator-pill">🔴 CLARO</div>
+    <div class="operator-pill">🟢 MOVISTAR</div>
+    <div class="operator-pill">🔵 TIGO</div>
+    <div class="normativa-pill">⚖️ Normativa CRC Colombia</div>
+    <div class="normativa-pill">🛡️ Ley Habeas Data</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ PAIN ═══════════════════════════════════════════ -->
+<section class="pain-section" id="problema">
+  <div class="section-inner em-visible-target">
+    <div class="section-tag">¿Te suena familiar?</div>
+    <h2 class="section-h2" style="color:#fff;">Los operadores hacen que cancelar sea <em>un laberinto.</em></h2>
+    <p class="section-sub">No es tu culpa. Es una estrategia deliberada para que desistas. Acá nombramos lo que te está pasando.</p>
+
+    <div class="pain-grid">
+      <div class="pain-card reveal tilt-hover d1">
+        <div class="pain-icon">📞</div>
+        <h3>Te pasan de asesor en asesor sin resolver nada</h3>
+        <p>Llevas 45 minutos en línea y ya vas por el tercer agente. Cada uno "transfiere tu caso" y vuelve a pedir los mismos datos. Nadie cancela, nadie asume responsabilidad.</p>
+      </div>
+
+      <div class="pain-card reveal tilt-hover d2">
+        <div class="pain-icon">📵</div>
+        <h3>Te cuelgan la llamada justo cuando ibas a cancelar</h3>
+        <p>"Espere un momento" — silencio. Fin de la llamada. Vuelves a marcar, esperas 20 minutos en cola y el ciclo comienza de nuevo. Tu tiempo vale, el de ellos también lo saben.</p>
+      </div>
+
+      <div class="pain-card reveal tilt-hover d3">
+        <div class="pain-icon">💳</div>
+        <h3>Te siguen facturando semanas después de pedir la cancelación</h3>
+        <p>Pediste la cancelación, te dijeron que quedó registrada, y al mes siguiente llega el cobro de todas formas. Con intereses. Y ahora tienes que demostrar que sí la pediste.</p>
+      </div>
+
+      <div class="pain-card reveal tilt-hover d4">
+        <div class="pain-icon">⚠️</div>
+        <h3>Te amenazan con permanencias que no aplican o cláusulas inventadas</h3>
+        <p>"Si cancela, le aplicamos una penalización de $450.000." Mentira. La Resolución 5111 de la CRC protege tu derecho a cancelar en cualquier momento. Pero ellos saben que tú no lo sabes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ HOW IT WORKS ═══════════════════════════════════════════ -->
+<section class="steps-section" id="como-funciona">
+  <div class="section-inner em-visible-target">
+    <div class="section-tag">Proceso simplificado</div>
+    <h2 class="section-h2">Cancelación en <em>3 pasos.</em><br>Tú no mueves un dedo.</h2>
+    <p class="section-sub">Sin formularios imposibles, sin esperas en línea, sin presiones. Nosotros hacemos el trabajo legal pesado.</p>
+
+    <div class="steps-track">
+      <div class="step-card reveal d1">
+        <div class="step-num">1</div>
+        <h3>Nos envías tus datos y el nombre de tu operador</h3>
+        <p>Completás un formulario sencillo (2 minutos). Nos indicas si es plan pospago móvil, internet hogar, televisión, o combinado. Sin documentos complicados.</p>
+        <span class="step-tag">⏱ 2 minutos de tu tiempo</span>
+      </div>
+
+      <div class="step-card reveal d2">
+        <div class="step-num">2</div>
+        <h3>Nuestros tramitadores radican la PQR formal con respaldo normativo</h3>
+        <p>Redactamos y presentamos la Petición, Queja o Reclamo ante el operador, citando la normativa exacta de la CRC. El operador queda legalmente obligado a responder. Te enviamos el número de radicado.</p>
+        <span class="step-tag">📋 Con número de Más solicitado
+span&gt;
+      </span></div>
+
+      <div class="step-card reveal d3">
+        <div class="step-num">3</div>
+        <h3>Tu servicio queda cancelado al 100% según la ley</h3>
+        <p>La ley le da al operador un plazo máximo para ejecutar la cancelación. Te notificamos en cada etapa y velamos porque se cumpla. Si el operador incumple, escalamos ante la SIC.</p>
+        <span class="step-tag">✅ Paz y salvo y corte el servicio definitivamente </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ SERVICES ═══════════════════════════════════════════ -->
+<section class="services-section" id="servicios">
+  <div class="section-inner em-visible-target">
+    <div class="section-tag">Lo que tramitamos</div>
+    <h2 class="section-h2">Todos los servicios.<br><em>Un solo lugar.</em></h2>
+    <p class="section-sub">Cubrimos los trámites de cancelación y gestión más frecuentes con operadores de telecomunicaciones en Colombia.</p>
+
+    <div class="services-grid">
+      <div class="service-card featured reveal-scale d1">
+        <span class="service-badge">Más solicitado</span>
+        <div class="service-icon-wrap">📱</div>
+        <h3>Cancelación de Internet Hogar y Televisión</h3>
+        <p>Claro Hogar, Movistar Fibra, Tigo, ETB y otros. Gestionamos la cancelación de tu servicio residencial aunque tengan excusas de toda clase.</p>
+        <ul class="service-features">
+          <li>Internet hogar (fibra, cable, ADSL)</li>
+          <li>Televisión por suscripción</li>
+          <li>Planes combinados TV + Internet</li>
+          <li>Coordinación del retiro de equipos si aplica</li>
+        </ul>
+      </div>
+
+      <div class="service-card reveal d2">
+        <div class="service-icon-wrap">🌐</div>
+        <h3>Cancelación de Planes Pospago Móvil</h3>
+        <p>Claro, Movistar, Tigo y Wom. Tramitamos la cancelación de tu línea pospago con toda la formalidad legal que el operador no puede ignorar.</p>
+        <ul class="service-features">
+          <li>Aplica para todas las líneas del titular</li>
+          <li>Sin importar el tiempo que llevas con el plan</li>
+          <li>Los equipos financiados no bloquean la cancelación del plan</li>
+          <li>Confirmación de baja definitiva del servicio</li>
+        </ul>
+      </div>
+
+      <div class="service-card reveal d3">
+        <div class="service-icon-wrap">⚖️</div>
+        <h3>Cobros injustos y reportes en centrales de riesgo</h3>
+        <p>¿Te cobraron meses que no usaste el servicio? ¿Te reportaron en DataCrédito por una deuda que no es tuya? Gestionamos la reclamación formal.</p>
+        <ul class="service-features">
+          <li>Reclamación de cobros indebidos post-cancelación</li>
+          <li>Impugnación de reportes negativos injustos</li>
+          <li>Solicitud de devolución de dinero por fallas del operador</li>
+          <li>Escalamiento ante la SIC si es necesario</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ WHY US ═══════════════════════════════════════════ -->
+<section class="why-section" id="por-que-nosotros">
+  <div class="section-inner em-visible-target">
+    <div class="section-tag">Por qué elegirnos</div>
+    <h2 class="section-h2">No somos un chatbot.<br>Somos <em>especialistas.</em></h2>
+    <p class="section-sub">Conocemos la normativa de la CRC al derecho y al revés. Los operadores lo saben. Por eso funcionamos.</p>
+
+    <div class="why-grid">
+      <div class="why-list">
+        <div class="why-item reveal-left d1">
+          <div class="why-icon">📜</div>
+          <div class="why-text">
+            <h4>Trámite bajo la normativa CRC</h4>
+            <p>Cada solicitud se radica citando los artículos exactos de la Resolución CRC aplicable. El operador no puede ignorar una PQR formal correctamente fundamentada.</p>
+          </div>
+        </div>
+
+        <div class="why-item reveal-left d2">
+          <div class="why-icon">⏰</div>
+          <div class="why-text">
+            <h4>Cero horas perdidas al teléfono</h4>
+            <p>Olvídate de las colas, los hold music y los asesores que no tienen autorización para nada. Tú nos das los datos, nosotros hacemos el resto.</p>
+          </div>
+        </div>
+
+        <div class="why-item reveal-left d3">
+          <div class="why-icon">🔍</div>
+          <div class="why-text">
+            <h4>Número de radicado con seguimiento</h4>
+            <p>Cada trámite genera un número de radicado oficial. Puedes consultar el estado en cualquier momento. No somos humo: somos papel y firma.</p>
+          </div>
+        </div>
+
+        <div class="why-item reveal-left d4">
+          <div class="why-icon">🛡️</div>
+          <div class="why-text">
+            <h4>Si el operador incumple, escalamos gratis</h4>
+            <p>Si dentro del plazo legal el operador no ejecuta la cancelación, llevamos el caso ante la Superintendencia de Industria y Comercio (SIC) sin costo adicional.</p>
+          </div>
+        </div>
+
+        <div class="why-item reveal-left d5">
+          <div class="why-icon">🔒</div>
+          <div class="why-text">
+            <h4>Tus datos protegidos bajo Ley Habeas Data</h4>
+            <p>La información que compartes con nosotros se trata bajo la Ley 1581 de 2012. Solo usamos lo necesario para el trámite, nada más.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="why-panel reveal-right">
+        <div class="crc-badge">
+          <div class="crc-title">⚖️ Respaldo legal: Resolución CRC 5111 y concordantes</div>
+          <p>En Colombia, todo usuario de telecomunicaciones tiene derecho a cancelar su servicio en cualquier momento. La permanencia mínima aplica solo a <strong style="color:var(--teal)">equipos adquiridos con financiación del operador</strong>, NO al servicio en sí. Esto lo establece la normativa de la CRC de manera clara y obligatoria para los operadores.</p>
+        </div>
+
+        <p>Los operadores aplican tácticas dilatorias porque saben que la mayoría de usuarios no conoce sus derechos o no tiene tiempo de insistir. Cuando la solicitud llega con fundamento legal preciso, las cosas cambian.</p>
+
+        <p>Nuestro equipo conoce los canales correctos, los tiempos legales y las instancias de escalamiento. Esa es nuestra ventaja y la tuya.</p>
+
+        <div class="legal-art">
+          <div class="legal-art-item">
+            <span class="lnum">15</span>
+            <span class="llbl">días hábiles máx. para cancelar (según CRC)</span>
+          </div>
+          <div class="legal-art-item">
+            <span class="lnum">SIC</span>
+            <span class="llbl">Ente que vigila el cumplimiento</span>
+          </div>
+          <div class="legal-art-item">
+            <span class="lnum">$0</span>
+            <span class="llbl">Costo por escalamiento si el operador incumple</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ PRICING ═══════════════════════════════════════════ -->
+
+
+<!-- ═══════════════════════════════════════════ FAQ ═══════════════════════════════════════════ -->
+<section class="faq-section" id="faq">
+  <div class="section-inner em-visible-target">
+    <div class="section-tag" style="display:block; text-align:center;">Preguntas frecuentes</div>
+    <h2 class="section-h2" style="text-align:center;">Las dudas que todos tienen.<br><em>Respuestas directas.</em></h2>
+    <p class="section-sub" style="text-align:center; margin: 0 auto 3rem;">Sin rodeos. Si no encuentras tu respuesta, escríbenos por WhatsApp.</p>
+
+    <div class="faq-grid">
+      <div class="faq-item reveal d1">
+        <h4>¿Es legal que un tercero haga mi cancelación?</h4>
+        <p>Sí, completamente legal. En Colombia cualquier persona puede actuar como gestor o mandatario de otra para presentar PQRs ante operadores de telecomunicaciones. No se requiere poder notarial. Nosotros actuamos con tu autorización expresa, que firmas al momento de contratar el servicio.</p>
+      </div>
+
+      <div class="faq-item reveal d2">
+        <h4>¿Qué pasa si tengo "cláusula de permanencia"?</h4>
+        <p>Aquí está el punto más importante: <strong>la permanencia aplica al equipo, no al servicio.</strong> Si compraste o financiaste un celular con el operador, puedes seguir pagando el equipo y aun así cancelar el plan. El operador no puede retener tu servicio por una permanencia asociada a un dispositivo. Esto lo garantiza la CRC.</p>
+      </div>
+
+      <div class="faq-item reveal d3">
+        <h4>¿Cuánto tiempo tiene el operador para cancelar mi servicio según la ley?</h4>
+        <p>Según la normativa de la CRC vigente en Colombia, el operador tiene un plazo máximo de <strong>15 días hábiles</strong> para dar trámite y ejecutar la cancelación del servicio desde la fecha de radicación de la solicitud formal. Si no lo hace, incurre en una infracción ante la SIC.</p>
+      </div>
+
+      <div class="faq-item reveal d4">
+        <h4>¿Qué pasa si me siguen cobrando después de la cancelación?</h4>
+        <p>Cualquier cobro posterior a la fecha de cancelación confirmada es <strong>un cobro indebido</strong>. Tienes derecho a reclamar la devolución de ese dinero. Si contrataste nuestro plan Completo o Gestión de Cobro, nosotros radicamos esa reclamación también. El operador está legalmente obligado a devolver los valores cobrados de forma injusta.</p>
+      </div>
+
+      <div class="faq-item reveal d1">
+        <h4>¿Necesito ir a una oficina del operador?</h4>
+        <p>No. Todo el proceso es 100% remoto. No tienes que ir a ninguna oficina, hacer fila ni hablar con ningún asesor. Nosotros manejamos todos los canales de radicación disponibles (en línea, escrito, correo certificado si es necesario).</p>
+      </div>
+
+      <div class="faq-item reveal d2">
+        <h4>¿Qué información me piden para iniciar el trámite?</h4>
+        <p>Solo lo básico: tu nombre completo, número de cédula, número de línea o número de cuenta del servicio que deseas cancelar, y el nombre del operador. No te pedimos contraseñas ni acceso a tus cuentas. Toda la información se trata bajo la Ley 1581 de 2012 (Habeas Data).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ FORMULARIO ═══════════════════════════════════════════ -->
+<section class="form-section" id="formulario">
+  <div class="section-inner em-visible-target">
+    <div class="form-header">
+      <div class="section-tag">Solicitud de cancelación</div>
+      <h2 class="section-h2">Diligencia tus datos.<br><em>Nosotros hacemos el resto.</em></h2>
+      <p class="section-sub">Tarda menos de 3 minutos. Toda tu información está protegida bajo la Ley 1581 de 2012 (Habeas Data).</p>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="form-progress-wrap">
+      <div class="form-progress-track">
+        <div class="form-progress-fill" id="progressFill"></div>
+      </div>
+      <div class="form-steps-labels">
+        <span class="fstep-label active" data-step="1">
+          <span class="fstep-dot">1</span>
+          <span class="fstep-name">Tus datos</span>
+        </span>
+        <span class="fstep-label" data-step="2">
+          <span class="fstep-dot">2</span>
+          <span class="fstep-name">Servicio</span>
+        </span>
+        <span class="fstep-label" data-step="3">
+          <span class="fstep-dot">3</span>
+          <span class="fstep-name">Documentos</span>
+        </span>
+        <span class="fstep-label" data-step="4">
+          <span class="fstep-dot">4</span>
+          <span class="fstep-name">Confirmar</span>
+        </span>
+      </div>
+    </div>
+
+    <div class="form-card" id="mainForm">
+
+      <!-- ── PASO 1: Datos personales ── -->
+      <div class="form-step active" id="step1">
+        <div class="form-step-header">
+          <div class="form-step-icon">👤</div>
+          <div>
+            <h3 class="form-step-title">Datos personales del titular</h3>
+            <p class="form-step-sub">Ingresa la información del titular del plan a cancelar.</p>
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-field">
+            <label for="nombres">Nombres completos *</label>
+            <input type="text" id="nombres" placeholder="Ej: María Fernanda" autocomplete="given-name">
+            <span class="field-err" id="err-nombres"></span>
+          </div>
+          <div class="form-field">
+            <label for="apellidos">Apellidos completos *</label>
+            <input type="text" id="apellidos" placeholder="Ej: Gómez Rodríguez" autocomplete="family-name">
+            <span class="field-err" id="err-apellidos"></span>
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-field">
+            <label for="tipoDoc">Tipo de documento *</label>
+            <div class="select-wrap">
+              <select id="tipoDoc">
+                <option value="">Selecciona</option>
+                <option value="CC">Cédula de ciudadanía</option>
+                <option value="CE">Cédula de extranjería</option>
+                <option value="PA">Pasaporte</option>
+                <option value="NIT">NIT (empresa)</option>
+              </select>
+              <svg class="select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <span class="field-err" id="err-tipoDoc"></span>
+          </div>
+          <div class="form-field">
+            <label for="numDoc">Número de documento *</label>
+            <input type="text" id="numDoc" placeholder="Ej: 1234567890" inputmode="numeric">
+            <span class="field-err" id="err-numDoc"></span>
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-field">
+            <label for="celular">Celular de contacto *</label>
+            <div class="input-prefix-wrap">
+              <span class="input-prefix">🇨🇴 +57</span>
+              <input type="tel" id="celular" placeholder="300 000 0000" inputmode="numeric" maxlength="10">
+            </div>
+            <span class="field-err" id="err-celular"></span>
+          </div>
+          <div class="form-field">
+            <label for="email">Correo electrónico *</label>
+            <input type="email" id="email" placeholder="tucorreo@gmail.com" autocomplete="email">
+            <span class="field-err" id="err-email"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="ciudad">Ciudad de residencia *</label>
+          <input type="text" id="ciudad" placeholder="Ej: Bogotá, Medellín, Cali…" autocomplete="address-level2">
+          <span class="field-err" id="err-ciudad"></span>
+        </div>
+
+        <div class="form-nav">
+          <span></span>
+          <button class="btn-form-next" onclick="goStep(2)">
+            Siguiente paso
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- ── PASO 2: Servicio y operador ── -->
+      <div class="form-step" id="step2">
+        <div class="form-step-header">
+          <div class="form-step-icon">📱</div>
+          <div>
+            <h3 class="form-step-title">Servicio que deseas cancelar</h3>
+            <p class="form-step-sub">Selecciona el operador y el tipo de plan. Puedes indicar más de uno.</p>
+          </div>
+        </div>
+
+        <!-- Operador -->
+        <div class="form-field">
+          <label>Operador a cancelar *</label>
+          <div class="operator-selector" id="operatorSelector">
+            <div class="op-btn" data-op="claro" onclick="selectOperator(this)">
+              <div class="op-btn-icon" style="background:#E30613">CL</div>
+              <span>Claro</span>
+            </div>
+            <div class="op-btn" data-op="movistar" onclick="selectOperator(this)">
+              <div class="op-btn-icon" style="background:#009900">MV</div>
+              <span>Movistar</span>
+            </div>
+            <div class="op-btn" data-op="tigo" onclick="selectOperator(this)">
+              <div class="op-btn-icon" style="background:#00B0E8">TG</div>
+              <span>Tigo</span>
+            </div>
+          </div>
+          <span class="field-err" id="err-operador"></span>
+        </div>
+
+        <!-- Tipo de servicio -->
+        <div class="form-field">
+          <label>Tipo de servicio *</label>
+          <div class="service-selector" id="serviceSelector">
+            <div class="svc-btn" data-svc="movil" onclick="selectService(this)">
+              <span class="svc-icon">📱</span>
+              <span class="svc-label">Plan Pospago Móvil</span>
+              <span class="svc-check">✓</span>
+            </div>
+            <div class="svc-btn" data-svc="internet" onclick="selectService(this)">
+              <span class="svc-icon">🌐</span>
+              <span class="svc-label">Internet Hogar</span>
+              <span class="svc-check">✓</span>
+            </div>
+            <div class="svc-btn" data-svc="tv" onclick="selectService(this)">
+              <span class="svc-icon">📺</span>
+              <span class="svc-label">Televisión</span>
+              <span class="svc-check">✓</span>
+            </div>
+            <div class="svc-btn" data-svc="combo" onclick="selectService(this)">
+              <span class="svc-icon">📦</span>
+              <span class="svc-label">Combo (varios)</span>
+              <span class="svc-check">✓</span>
+            </div>
+          </div>
+          <span class="field-err" id="err-servicio"></span>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-field">
+            <label for="numLinea">Número de línea / cuenta del servicio *</label>
+            <input type="text" id="numLinea" placeholder="Ej: 3100001234 o cuenta 123456">
+            <span class="help-text">Este dato aparece en tu factura o en la app del operador.</span>
+            <span class="field-err" id="err-numLinea"></span>
+          </div>
+          <div class="form-field">
+            <label for="motivoCancelacion">Motivo de cancelación</label>
+            <div class="select-wrap">
+              <select id="motivoCancelacion">
+                <option value="">Selecciona (opcional)</option>
+                <option value="mal_servicio">Mal servicio / fallas técnicas</option>
+                <option value="precio">Precio muy alto</option>
+                <option value="cambio_operador">Cambio de operador</option>
+                <option value="no_uso">Ya no uso el servicio</option>
+                <option value="mudanza">Mudanza / cambio de ciudad</option>
+                <option value="cobro_indebido">Cobros indebidos</option>
+                <option value="otro">Otro</option>
+              </select>
+              <svg class="select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="detalleAdicional">¿Algo más que debamos saber? (opcional)</label>
+          <textarea id="detalleAdicional" rows="3" placeholder="Ej: me siguen cobrando después de que pedí la cancelación, tengo equipo financiado, etc."></textarea>
+        </div>
+
+        <div class="form-nav">
+          <button class="btn-form-back" onclick="goStep(1)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"></path></svg>
+            Atrás
+          </button>
+          <button class="btn-form-next" onclick="goStep(3)">
+            Siguiente paso
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- ── PASO 3: Documentos ── -->
+      <div class="form-step" id="step3">
+        <div class="form-step-header">
+          <div class="form-step-icon">📎</div>
+          <div>
+            <h3 class="form-step-title">Adjunta tus documentos</h3>
+            <p class="form-step-sub">Los necesitamos para radicar la solicitud a tu nombre. Formatos: JPG, PNG o PDF · Máx. 5MB por archivo.</p>
+          </div>
+        </div>
+
+        <div class="upload-grid">
+          <!-- CC Frontal -->
+          <div class="upload-zone" id="zone-cc-front" onclick="triggerUpload('cc-front')">
+            <input type="file" id="file-cc-front" accept="image/*,.pdf" style="display:none" onchange="handleFile(this,'cc-front')">
+            <div class="upload-preview" id="preview-cc-front">
+              <div class="upload-icon">🪪</div>
+              <div class="upload-label">Cédula — <strong>Frente</strong></div>
+              <div class="upload-hint">Toca para adjuntar</div>
+            </div>
+            <div class="upload-done" id="done-cc-front" style="display:none">
+              <span class="upload-check">✓</span>
+              <span class="upload-fname" id="fname-cc-front"></span>
+              <button class="upload-remove" onclick="removeFile(event,'cc-front')">✕</button>
+            </div>
+          </div>
+
+          <!-- CC Posterior -->
+          <div class="upload-zone" id="zone-cc-back" onclick="triggerUpload('cc-back')">
+            <input type="file" id="file-cc-back" accept="image/*,.pdf" style="display:none" onchange="handleFile(this,'cc-back')">
+            <div class="upload-preview" id="preview-cc-back">
+              <div class="upload-icon">🪪</div>
+              <div class="upload-label">Cédula — <strong>Reverso</strong></div>
+              <div class="upload-hint">Toca para adjuntar</div>
+            </div>
+            <div class="upload-done" id="done-cc-back" style="display:none">
+              <span class="upload-check">✓</span>
+              <span class="upload-fname" id="fname-cc-back"></span>
+              <button class="upload-remove" onclick="removeFile(event,'cc-back')">✕</button>
+            </div>
+          </div>
+
+          <!-- Factura -->
+          <div class="upload-zone upload-zone-wide" id="zone-factura" onclick="triggerUpload('factura')">
+            <input type="file" id="file-factura" accept="image/*,.pdf" style="display:none" onchange="handleFile(this,'factura')">
+            <div class="upload-preview" id="preview-factura">
+              <div class="upload-icon">🧾</div>
+              <div class="upload-label">Factura del operador <strong>(última disponible)</strong></div>
+              <div class="upload-hint">Toca para adjuntar · JPG, PNG o PDF</div>
+            </div>
+            <div class="upload-done" id="done-factura" style="display:none">
+              <span class="upload-check">✓</span>
+              <span class="upload-fname" id="fname-factura"></span>
+              <button class="upload-remove" onclick="removeFile(event,'factura')">✕</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="upload-note">
+          🔒 Tus documentos se cifran en tránsito y se usan exclusivamente para el trámite de cancelación. Se eliminan automáticamente a los 30 días.
+        </div>
+        <span class="field-err" id="err-docs"></span>
+
+        <div class="form-nav">
+          <button class="btn-form-back" onclick="goStep(2)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"></path></svg>
+            Atrás
+          </button>
+          <button class="btn-form-next" onclick="goStep(4)">
+            Revisar solicitud
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- ── PASO 4: Confirmación ── -->
+      <div class="form-step" id="step4">
+        <div class="form-step-header">
+          <div class="form-step-icon">✅</div>
+          <div>
+            <h3 class="form-step-title">Revisa y confirma tu solicitud</h3>
+            <p class="form-step-sub">Verifica que todo esté correcto antes de enviar.</p>
+          </div>
+        </div>
+
+        <div class="summary-card">
+          <div class="summary-section">
+            <div class="summary-title">👤 Datos personales</div>
+            <div class="summary-grid">
+              <div class="summary-row"><span>Nombre</span><strong id="s-nombre">—</strong></div>
+              <div class="summary-row"><span>Documento</span><strong id="s-doc">—</strong></div>
+              <div class="summary-row"><span>Celular</span><strong id="s-cel">—</strong></div>
+              <div class="summary-row"><span>Correo</span><strong id="s-email">—</strong></div>
+              <div class="summary-row"><span>Ciudad</span><strong id="s-ciudad">—</strong></div>
+            </div>
+          </div>
+          <div class="summary-divider"></div>
+          <div class="summary-section">
+            <div class="summary-title">📱 Servicio a cancelar</div>
+            <div class="summary-grid">
+              <div class="summary-row"><span>Operador</span><strong id="s-operador">—</strong></div>
+              <div class="summary-row"><span>Tipo de servicio</span><strong id="s-servicio">—</strong></div>
+              <div class="summary-row"><span>Línea / cuenta</span><strong id="s-linea">—</strong></div>
+              <div class="summary-row"><span>Motivo</span><strong id="s-motivo">—</strong></div>
+            </div>
+          </div>
+          <div class="summary-divider"></div>
+          <div class="summary-section">
+            <div class="summary-title">📎 Documentos adjuntos</div>
+            <div class="summary-docs" id="s-docs"></div>
+          </div>
+        </div>
+
+        <div class="habeas-check">
+          <label class="check-label">
+            <input type="checkbox" id="habeasCheck">
+            <span class="check-box"></span>
+            <span class="check-text">Autorizo el tratamiento de mis datos personales conforme a la Política de Privacidad de CancelYa y la <strong>Ley 1581 de 2012 (Habeas Data)</strong>. Mis datos serán usados únicamente para el trámite de cancelación solicitado.</span>
+          </label>
+          <span class="field-err" id="err-habeas"></span>
+        </div>
+
+        <div class="form-nav">
+          <button class="btn-form-back" onclick="goStep(3)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"></path></svg>
+            Atrás
+          </button>
+          <button class="btn-form-submit" id="submitBtn" onclick="submitForm()">
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style="width:20px;height:20px;fill:currentColor;flex-shrink:0"><path d="M16.004 0C7.164 0 0 7.164 0 16.004c0 2.824.737 5.566 2.138 7.976L.073 31.927l8.18-2.14A15.953 15.953 0 0016.004 32C24.836 32 32 24.836 32 16.004 32 7.164 24.836 0 16.004 0zm0 29.268a13.22 13.22 0 01-6.74-1.847l-.483-.288-5.004 1.31 1.337-4.876-.314-.5A13.223 13.223 0 012.732 16.004c0-7.3 5.972-13.272 13.272-13.272 7.3 0 13.272 5.972 13.272 13.272 0 7.3-5.972 13.264-13.272 13.264zm7.276-9.932c-.398-.2-2.357-1.163-2.722-1.296-.365-.133-.63-.2-.896.2-.266.398-1.03 1.296-1.263 1.562-.232.266-.465.3-.863.1-.398-.2-1.68-.619-3.2-1.977-1.183-1.055-1.98-2.358-2.213-2.756-.232-.398-.025-.614.175-.813.18-.178.398-.465.598-.697.2-.232.266-.398.398-.664.133-.266.066-.498-.033-.697-.1-.2-.896-2.157-1.228-2.955-.323-.775-.65-.67-.896-.682l-.763-.013c-.266 0-.697.1-1.063.498-.365.398-1.394 1.363-1.394 3.32 0 1.956 1.428 3.846 1.627 4.112.2.266 2.81 4.29 6.808 6.017.951.41 1.693.655 2.272.84.954.304 1.823.261 2.51.158.765-.114 2.357-.963 2.69-1.895.332-.93.332-1.728.232-1.895-.1-.166-.365-.266-.763-.465z"></path></svg>
+            Enviar solicitud por WhatsApp
+          </button>
+        </div>
+      </div>
+
+      <!-- ── SUCCESS STATE ── -->
+      <div class="form-success" id="formSuccess" style="display:none">
+        <div class="success-anim">
+          <div class="success-ring"></div>
+          <div class="success-check">✓</div>
+        </div>
+        <h3>¡Solicitud enviada!</h3>
+        <p>Tu caso fue registrado. Uno de nuestros tramitadores te contactará en menos de <strong>2 horas hábiles</strong> para confirmar el radicado.</p>
+        <div class="success-ref" id="successRef"></div>
+        <a href="https://wa.me/573187709006" target="_blank" class="btn-primary" style="margin-top:1.5rem; display:inline-flex;">
+          💬 Seguir por WhatsApp
+        </a>
+      </div>
+
+    </div><!-- /form-card -->
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════ CTA FINAL ═══════════════════════════════════════════ -->
+<section class="cta-final" id="iniciar">
+  <div class="section-inner em-visible-target">
+    <h2>Ya gastaste demasiado tiempo intentándolo solo.<br><em class="cursor-blink">Ahora lo hacemos nosotros.</em></h2>
+    <p>Inicia tu trámite hoy. En menos de 2 minutos configuramos tu caso y nuestro equipo toma el control. Tú solo esperas la confirmación del radicado y la posterior cancelación.</p>
+
+    <div class="cta-final-row">
+      <a href="https://wa.me/573187709006?text=Hola,%20quiero%20iniciar%20mi%20trámite%20de%20cancelación" class="btn-white">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.55 1.18a2 2 0 012-2.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 6.37a16 16 0 006.72 6.72l.87-.87a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"></path></svg>
+        Iniciar por WhatsApp
+      </a>
+      <a href="mailto:hola@cancelya.co" class="btn-ghost">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        Escribirnos por correo
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ FOOTER ═══════════════════════════════════════════ -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <a href="#" class="logo">Cancel<span>Ya</span></a>
+      <p class="footer-desc">
+        Servicio independiente de tramitación y asesoría legal para la cancelación de planes de telecomunicaciones en Colombia. No somos Claro, Movistar, Tigo ni ningún operador. Somos tus representantes frente a ellos.
+      </p>
+    </div>
+
+    <div class="footer-col">
+      <h5>Servicios</h5>
+      <a href="#servicios">Cancelación pospago móvil</a>
+      <a href="#servicios">Cancelación internet hogar</a>
+      <a href="#servicios">Gestión de cobros injustos</a>
+      <a href="#servicios">Reportes en centrales de riesgo</a>
+    </div>
+
+    <div class="footer-col">
+      <h5>Legal</h5>
+      <a href="#">Política de privacidad</a>
+      <a href="#">Tratamiento de datos personales</a>
+      <a href="#">Términos y condiciones</a>
+      <a href="#">Política de reembolsos</a>
+      <span style="margin-top:0.4rem;">Ley 1581 de 2012 · Habeas Data</span>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 CancelYa. Todos los derechos reservados. · Bogotá, Colombia · NIT: </p>
+    <p style="margin-top:0.3rem;">
+      <a href="mailto:hola@cancelya.co" style="color:rgba(255,255,255,0.4); text-decoration:none;">hola@cancelya.co</a>
+      &nbsp;·&nbsp;
+      <a href="https://wa.me/573187709006" style="color:rgba(255,255,255,0.4); text-decoration:none;">WhatsApp</a>
+    </p>
+
+    <p class="footer-disclaimer">
+      <strong style="color:rgba(255,255,255,0.3);">Descargo de responsabilidad:</strong> CancelYa es un servicio de tramitación y asesoría independiente. No tenemos relación comercial, laboral ni de ningún tipo con los operadores Claro, Movistar, Tigo ni con ninguna empresa del sector de telecomunicaciones. Actuamos exclusivamente como representantes del usuario final en la gestión de sus derechos ante los operadores, con fundamento en la normativa colombiana de protección al usuario de servicios de comunicaciones (CRC) y las disposiciones de la Superintendencia de Industria y Comercio (SIC). El éxito del trámite depende del cumplimiento de la ley por parte del operador; en casos de incumplimiento, CancelYa acompaña al usuario en el escalamiento ante las entidades competentes, pero los tiempos definitivos de cancelación son responsabilidad del operador. Los datos personales del usuario se tratan conforme a nuestra Política de Tratamiento de Datos Personales, en cumplimiento de la Ley 1581 de 2012 y el Decreto 1377 de 2013.
+    </p>
+  </div>
+</footer>
+
+<style>
+  /* ────────────────────────────── WHATSAPP FLOAT ────────────────────────────── */
+  .wa-float {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+  }
+
+  .wa-tooltip {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'Sora', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 10px;
+    white-space: nowrap;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+    opacity: 0;
+    transform: translateX(8px);
+    transition: opacity 0.25s, transform 0.25s;
+    pointer-events: none;
+    position: relative;
+  }
+
+  .wa-tooltip::after {
+    content: '';
+    position: absolute;
+    right: 14px;
+    bottom: -6px;
+    width: 12px;
+    height: 12px;
+    background: var(--navy);
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+  }
+
+  .wa-float:hover .wa-tooltip,
+  .wa-float.show-tip .wa-tooltip {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .wa-btn {
+    width: 60px;
+    height: 60px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 28px rgba(37,211,102,0.45);
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+  }
+
+  .wa-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 36px rgba(37,211,102,0.55);
+  }
+
+  .wa-btn svg {
+    width: 32px;
+    height: 32px;
+    fill: #fff;
+  }
+
+  /* Pulse ring */
+  .wa-btn::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    border: 2.5px solid rgba(37,211,102,0.5);
+    animation: wa-pulse 2.2s ease-out infinite;
+  }
+
+  .wa-btn::after {
+    content: '';
+    position: absolute;
+    inset: -12px;
+    border-radius: 50%;
+    border: 2px solid rgba(37,211,102,0.25);
+    animation: wa-pulse 2.2s ease-out 0.5s infinite;
+  }
+
+  @keyframes wa-pulse {
+    0%   { transform: scale(0.9); opacity: 1; }
+    80%  { transform: scale(1.35); opacity: 0; }
+    100% { opacity: 0; }
+  }
+
+  /* Notification dot */
+  .wa-dot {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 14px;
+    height: 14px;
+    background: #FF5A5A;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    font-size: 0;
+  }
+</style>
+
+<!-- WhatsApp Floating Button -->
+<div class="wa-float" id="waFloat">
+  <div class="wa-tooltip">💬 Escríbenos, respondemos ya</div>
+  <a href="https://wa.me/573187709006?text=Hola%2C%20quiero%20cancelar%20mi%20plan%20con%20el%20operador.%20%C2%BFMe%20pueden%20ayudar%3F" class="wa-btn" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+    <!-- WhatsApp official icon -->
+    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+      <path d="M16.004 0C7.164 0 0 7.164 0 16.004c0 2.824.737 5.566 2.138 7.976L.073 31.927l8.18-2.14A15.953 15.953 0 0016.004 32C24.836 32 32 24.836 32 16.004 32 7.164 24.836 0 16.004 0zm0 29.268a13.22 13.22 0 01-6.74-1.847l-.483-.288-5.004 1.31 1.337-4.876-.314-.5A13.223 13.223 0 012.732 16.004c0-7.3 5.972-13.272 13.272-13.272 7.3 0 13.272 5.972 13.272 13.272 0 7.3-5.972 13.264-13.272 13.264zm7.276-9.932c-.398-.2-2.357-1.163-2.722-1.296-.365-.133-.63-.2-.896.2-.266.398-1.03 1.296-1.263 1.562-.232.266-.465.3-.863.1-.398-.2-1.68-.619-3.2-1.977-1.183-1.055-1.98-2.358-2.213-2.756-.232-.398-.025-.614.175-.813.18-.178.398-.465.598-.697.2-.232.266-.398.398-.664.133-.266.066-.498-.033-.697-.1-.2-.896-2.157-1.228-2.955-.323-.775-.65-.67-.896-.682l-.763-.013c-.266 0-.697.1-1.063.498-.365.398-1.394 1.363-1.394 3.32 0 1.956 1.428 3.846 1.627 4.112.2.266 2.81 4.29 6.808 6.017.951.41 1.693.655 2.272.84.954.304 1.823.261 2.51.158.765-.114 2.357-.963 2.69-1.895.332-.93.332-1.728.232-1.895-.1-.166-.365-.266-.763-.465z"></path>
+    </svg>
+    <span class="wa-dot"></span>
+  </a>
+</div>
+
+<script>
+/* ══ SMOOTH SCROLL ══ */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', function(e) {
+    const t = document.querySelector(this.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  });
+});
+
+/* ══ WA FLOAT TOOLTIP ══ */
+const waFloat = document.getElementById('waFloat');
+if (waFloat) {
+  setTimeout(() => waFloat.classList.add('show-tip'), 1500);
+  setTimeout(() => waFloat.classList.remove('show-tip'), 5500);
+}
+
+/* ══ NAV SCROLL CLASS ══ */
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+/* ══ SCROLL REVEAL ══ */
+const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
+  });
+}, { threshold: 0.1 });
+revealEls.forEach(el => revealObs.observe(el));
+
+/* ══ EM UNDERLINE TRIGGER ══ */
+const emObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('em-visible'); emObs.unobserve(e.target); }
+  });
+}, { threshold: 0.18 });
+document.querySelectorAll('.em-visible-target').forEach(el => emObs.observe(el));
+
+/* ══ HERO PARTICLE CANVAS ══ */
+(function() {
+  const canvas = document.getElementById('hero-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [];
+
+  function resize() {
+    W = canvas.width  = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  const COLORS = ['rgba(0,201,167,', 'rgba(0,176,232,', 'rgba(123,97,255,'];
+
+  class Particle {
+    constructor() { this.reset(true); }
+    reset(init) {
+      this.x     = init ? Math.random() * W : (Math.random() < 0.5 ? -20 : W + 20);
+      this.y     = Math.random() * H;
+      this.r     = Math.random() * 5 + 2;
+      this.glow  = this.r * 4;
+      this.vx    = (Math.random() - 0.5) * 0.32;
+      this.vy    = (Math.random() - 0.5) * 0.32;
+      this.alpha = Math.random() * 0.55 + 0.35;
+      this.color = COLORS[Math.floor(Math.random() * COLORS.length)];
+    }
+    update() {
+      this.x += this.vx; this.y += this.vy;
+      if (this.x < -30 || this.x > W + 30 || this.y < -30 || this.y > H + 30) this.reset(false);
+    }
+    draw() {
+      // Halo difuminado
+      const grd = ctx.createRadialGradient(
+        this.x, this.y, 0,
+        this.x, this.y, this.glow
+      );
+      grd.addColorStop(0,   this.color + (this.alpha * 0.6) + ')');
+      grd.addColorStop(0.4, this.color + (this.alpha * 0.25) + ')');
+      grd.addColorStop(1,   this.color + '0)');
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.glow, 0, Math.PI * 2);
+      ctx.fillStyle = grd;
+      ctx.fill();
+      // Núcleo sólido
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+      ctx.fillStyle = this.color + this.alpha + ')';
+      ctx.fill();
+    }
+  }
+
+  for (let i = 0; i < 180; i++) particles.push(new Particle());
+
+  function drawLines() {
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const d = Math.sqrt(dx*dx + dy*dy);
+        if (d < 160) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(0,201,167,${0.08 * (1 - d/160)})`;
+          ctx.lineWidth = 0.8;
+          ctx.stroke();
+        }
+      }
+    }
+  }
+
+  function tick() {
+    ctx.clearRect(0, 0, W, H);
+    drawLines();
+    particles.forEach(p => { p.update(); p.draw(); });
+    requestAnimationFrame(tick);
+  }
+  tick();
+
+  const heroEl = document.querySelector('.hero');
+  if (heroEl) {
+    heroEl.addEventListener('mousemove', (e) => {
+      const r = canvas.getBoundingClientRect();
+      const mx = (e.clientX - r.left) / W - 0.5;
+      const my = (e.clientY - r.top)  / H - 0.5;
+      particles.forEach(p => {
+        p.vx += mx * 0.004; p.vy += my * 0.004;
+        p.vx *= 0.98; p.vy *= 0.98;
+      });
+    });
+  }
+})();
+
+/* ══ 3D TILT ON PAIN CARDS ══ */
+document.querySelectorAll('.tilt-hover').forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const r = card.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width  - 0.5;
+    const y = (e.clientY - r.top)  / r.height - 0.5;
+    card.style.transform = `perspective(600px) rotateY(${x * 10}deg) rotateX(${-y * 10}deg) translateY(-4px)`;
+  });
+  card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+});
+
+/* ══ MAGNETIC BUTTONS ══ */
+document.querySelectorAll('.btn-primary, .btn-price-primary, .btn-white').forEach(btn => {
+  btn.addEventListener('mousemove', (e) => {
+    const r = btn.getBoundingClientRect();
+    const x = (e.clientX - r.left - r.width  / 2) * 0.22;
+    const y = (e.clientY - r.top  - r.height / 2) * 0.22;
+    btn.style.transform = `translate(${x}px, ${y}px) translateY(-2px)`;
+  });
+  btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+});
+
+/* ══ ANIMATED COUNTERS (hero stats) ══ */
+function animCount(el, target, suffix, dur) {
+  const end = parseInt(target);
+  if (isNaN(end)) { el.textContent = target + suffix; return; }
+  let start = null;
+  (function step(ts) {
+    if (!start) start = ts;
+    const p = Math.min((ts - start) / dur, 1);
+    const ease = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.floor(ease * end) + suffix;
+    if (p < 1) requestAnimationFrame(step);
+  })(performance.now());
+}
+const statData = [['15',''], ['100','%'], ['0',''], ['500','+']];
+document.querySelectorAll('.hero-stat .num').forEach((el, i) => {
+  if (statData[i]) setTimeout(() => animCount(el, statData[i][0], statData[i][1], 1300), 1100 + i * 150);
+});
+</script>
+
+
+<script>
+/* ══════════════════════════════════════════
+   FORMULARIO MULTISTEP — CancelYa
+══════════════════════════════════════════ */
+let currentStep = 1;
+let goingBack = false;
+const formData = {};
+const uploadedFiles = {};
+
+const WA_NUMBER = '573187709006';
+const progressPercents = { 1: '25%', 2: '50%', 3: '75%', 4: '100%' };
+
+function goStep(n) {
+  if (n > currentStep && !validateStep(currentStep)) return;
+  goingBack = n < currentStep;
+
+  document.getElementById('step' + currentStep).classList.remove('active');
+  currentStep = n;
+
+  const next = document.getElementById('step' + currentStep);
+  next.classList.remove('back');
+  if (goingBack) next.classList.add('back');
+  next.classList.add('active');
+
+  // Progress bar
+  document.getElementById('progressFill').style.width = progressPercents[n];
+
+  // Step labels
+  document.querySelectorAll('.fstep-label').forEach(el => {
+    const s = parseInt(el.dataset.step);
+    el.classList.remove('active','done');
+    if (s === n) el.classList.add('active');
+    else if (s < n) el.classList.add('done');
+  });
+
+  // Build summary on step 4
+  if (n === 4) buildSummary();
+
+  // Scroll to form
+  document.getElementById('formulario').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+/* ── Validation ── */
+function validateStep(step) {
+  let ok = true;
+
+  const setErr = (id, msg) => {
+    const el = document.getElementById('err-' + id);
+    if (el) el.textContent = msg;
+    const input = document.getElementById(id);
+    if (input) input.classList.toggle('error', !!msg);
+  };
+  const clearAll = (...ids) => ids.forEach(id => setErr(id, ''));
+
+  if (step === 1) {
+    clearAll('nombres','apellidos','tipoDoc','numDoc','celular','email','ciudad');
+    const n = v('nombres'), a = v('apellidos'), td = v('tipoDoc'),
+          nd = v('numDoc'), cel = v('celular'), em = v('email'), c = v('ciudad');
+    if (!n) { setErr('nombres','Ingresa tus nombres'); ok=false; }
+    if (!a) { setErr('apellidos','Ingresa tus apellidos'); ok=false; }
+    if (!td) { setErr('tipoDoc','Selecciona un tipo de documento'); ok=false; }
+    if (!nd || nd.length < 5) { setErr('numDoc','Ingresa un número de documento válido'); ok=false; }
+    if (!cel || cel.replace(/\s/g,'').length < 10) { setErr('celular','Ingresa un número de celular válido (10 dígitos)'); ok=false; }
+    if (!em || !em.includes('@')) { setErr('email','Ingresa un correo válido'); ok=false; }
+    if (!c) { setErr('ciudad','Ingresa tu ciudad'); ok=false; }
+  }
+
+  if (step === 2) {
+    setErr('operador',''); setErr('servicio',''); setErr('numLinea','');
+    if (!formData.operador) { setErr('operador','Selecciona un operador'); ok=false; }
+    if (!formData.servicio) { setErr('servicio','Selecciona el tipo de servicio'); ok=false; }
+    if (!v('numLinea')) { setErr('numLinea','Ingresa el número de línea o cuenta'); ok=false; }
+  }
+
+  if (step === 3) {
+    setErr('docs','');
+    if (!uploadedFiles['cc-front'] || !uploadedFiles['cc-back'] || !uploadedFiles['factura']) {
+      setErr('docs','Por favor adjunta los tres documentos requeridos');
+      ok = false;
+    }
+  }
+
+  return ok;
+}
+
+function v(id) {
+  const el = document.getElementById(id);
+  return el ? el.value.trim() : '';
+}
+
+/* ── Operator selector ── */
+function selectOperator(el) {
+  document.querySelectorAll('.op-btn').forEach(b => b.classList.remove('selected'));
+  el.classList.add('selected');
+  formData.operador = el.dataset.op;
+  document.getElementById('err-operador').textContent = '';
+}
+
+/* ── Service selector (multi) ── */
+const selectedServices = new Set();
+function selectService(el) {
+  const svc = el.dataset.svc;
+  if (selectedServices.has(svc)) {
+    selectedServices.delete(svc);
+    el.classList.remove('selected');
+  } else {
+    selectedServices.add(svc);
+    el.classList.add('selected');
+  }
+  formData.servicio = [...selectedServices].join(', ');
+  document.getElementById('err-servicio').textContent = '';
+}
+
+/* ── File upload ── */
+function triggerUpload(key) {
+  document.getElementById('file-' + key).click();
+}
+
+function handleFile(input, key) {
+  const file = input.files[0];
+  if (!file) return;
+  if (file.size > 5 * 1024 * 1024) {
+    alert('El archivo supera el límite de 5MB. Por favor usa un archivo más pequeño.');
+    input.value = '';
+    return;
+  }
+  uploadedFiles[key] = file;
+  document.getElementById('preview-' + key).style.display = 'none';
+  document.getElementById('done-' + key).style.display = 'flex';
+  document.getElementById('fname-' + key).textContent = file.name;
+  document.getElementById('zone-' + key).classList.add('has-file');
+}
+
+function removeFile(e, key) {
+  e.stopPropagation();
+  delete uploadedFiles[key];
+  document.getElementById('file-' + key).value = '';
+  document.getElementById('preview-' + key).style.display = '';
+  document.getElementById('done-' + key).style.display = 'none';
+  document.getElementById('zone-' + key).classList.remove('has-file');
+}
+
+/* ── Build summary ── */
+const opNames = { claro:'Claro', movistar:'Movistar', tigo:'Tigo' };
+const svcNames = { movil:'Plan Pospago Móvil', internet:'Internet Hogar', tv:'Televisión', combo:'Combo' };
+const motivoNames = {
+  mal_servicio:'Mal servicio / fallas técnicas', precio:'Precio muy alto',
+  cambio_operador:'Cambio de operador', no_uso:'Ya no uso el servicio',
+  mudanza:'Mudanza', cobro_indebido:'Cobros indebidos', otro:'Otro', '':'No especificado'
+};
+const docLabels = { 'cc-front':'CC Frente', 'cc-back':'CC Reverso', 'factura':'Factura operador' };
+
+function buildSummary() {
+  document.getElementById('s-nombre').textContent  = v('nombres') + ' ' + v('apellidos');
+  document.getElementById('s-doc').textContent     = v('tipoDoc') + ' ' + v('numDoc');
+  document.getElementById('s-cel').textContent     = '+57 ' + v('celular');
+  document.getElementById('s-email').textContent   = v('email');
+  document.getElementById('s-ciudad').textContent  = v('ciudad');
+  document.getElementById('s-operador').textContent = opNames[formData.operador] || formData.operador || '—';
+  document.getElementById('s-servicio').textContent = [...selectedServices].map(s => svcNames[s] || s).join(' + ') || '—';
+  document.getElementById('s-linea').textContent   = v('numLinea') || '—';
+  document.getElementById('s-motivo').textContent  = motivoNames[v('motivoCancelacion')] || '—';
+
+  const docsWrap = document.getElementById('s-docs');
+  docsWrap.innerHTML = '';
+  Object.keys(uploadedFiles).forEach(k => {
+    const pill = document.createElement('span');
+    pill.className = 'summary-doc-pill';
+    pill.textContent = '📎 ' + (docLabels[k] || k);
+    docsWrap.appendChild(pill);
+  });
+}
+
+/* ── Submit ── */
+function submitForm() {
+  if (!document.getElementById('habeasCheck').checked) {
+    document.getElementById('err-habeas').textContent = 'Debes aceptar la política de tratamiento de datos para continuar.';
+    return;
+  }
+  document.getElementById('err-habeas').textContent = '';
+
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<span style="animation:spin 0.8s linear infinite;display:inline-block">⏳</span> Enviando…';
+
+  // Build WhatsApp message with all collected data
+  const svcList = [...selectedServices].map(s => svcNames[s] || s).join(' + ');
+  const docsAttached = Object.keys(uploadedFiles).map(k => docLabels[k]).join(', ');
+  const ref = 'CY-' + Date.now().toString(36).toUpperCase();
+
+  const msg = [
+    '🔔 *NUEVA SOLICITUD DE CANCELACIÓN — CancelYa*',
+    '',
+    '👤 *Datos del titular*',
+    `Nombre: ${v('nombres')} ${v('apellidos')}`,
+    `Documento: ${v('tipoDoc')} ${v('numDoc')}`,
+    `Celular: +57 ${v('celular')}`,
+    `Correo: ${v('email')}`,
+    `Ciudad: ${v('ciudad')}`,
+    '',
+    '📱 *Servicio a cancelar*',
+    `Operador: ${opNames[formData.operador] || formData.operador}`,
+    `Tipo: ${svcList}`,
+    `Línea / cuenta: ${v('numLinea')}`,
+    `Motivo: ${motivoNames[v('motivoCancelacion')] || 'No especificado'}`,
+    v('detalleAdicional') ? `Detalle: ${v('detalleAdicional')}` : '',
+    '',
+    '📎 *Documentos adjuntos*',
+    docsAttached || 'Ninguno seleccionado',
+    '',
+    `📋 Ref: ${ref}`,
+    '',
+    'ℹ️ Los documentos adjuntos se enviarán en el siguiente mensaje.'
+  ].filter(Boolean).join('\n');
+
+  // Show success
+  setTimeout(() => {
+    document.getElementById('mainForm').innerHTML = '';
+    const successEl = document.getElementById('formSuccess') || document.createElement('div');
+    document.getElementById('mainForm').appendChild(buildSuccessHTML(ref));
+
+    // Open WhatsApp
+    window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg), '_blank');
+  }, 900);
+}
+
+function buildSuccessHTML(ref) {
+  const div = document.createElement('div');
+  div.className = 'form-success';
+  div.innerHTML = `
+    <div class="success-anim">
+      <div class="success-ring"></div>
+      <div class="success-check">✓</div>
+    </div>
+    <h3>¡Solicitud enviada!</h3>
+    <p>Tu caso fue registrado. Se abrirá WhatsApp para que puedas adjuntar los documentos. Uno de nuestros tramitadores te confirmará el radicado en menos de <strong>2 horas hábiles</strong>.</p>
+    <div class="success-ref">Ref: ${ref}</div>
+    <a href="https://wa.me/${WA_NUMBER}" target="_blank" class="btn-primary" style="margin-top:1.5rem;display:inline-flex;gap:8px;">
+      💬 Adjuntar documentos por WhatsApp
+    </a>
+  `;
+  return div;
+}
+</script>
+<style>
+@keyframes spin { to { transform: rotate(360deg); } }
+</style>
+
+<!-- Custom cursor -->
+<style>
+* { cursor: none !important; }
+#cursor-dot, #cursor-ring {
+  position: fixed; top: 0; left: 0; pointer-events: none; z-index: 99999; border-radius: 50%;
+}
+#cursor-dot {
+  width: 8px; height: 8px; background: #00C9A7;
+  transform: translate(-50%, -50%);
+}
+#cursor-ring {
+  width: 36px; height: 36px;
+  border: 2px solid rgba(0,201,167,0.6);
+  transform: translate(-50%, -50%);
+  transition: width .2s, height .2s, border-color .2s;
+}
+a:hover ~ #cursor-ring, button:hover ~ #cursor-ring { width: 50px; height: 50px; border-color: #FFB800; }
+</style>
+<div id="cursor-dot"></div>
+<div id="cursor-ring" style="transform: translate(0px, 0px) translate(-50%, -50%);"></div>
+<script>
+(function(){
+  const dot = document.getElementById('cursor-dot');
+  const ring = document.getElementById('cursor-ring');
+  let mx=0, my=0, rx=0, ry=0;
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    dot.style.transform = `translate(${mx}px,${my}px) translate(-50%,-50%)`;
+  });
+  (function animRing(){
+    rx += (mx-rx)*.12; ry += (my-ry)*.12;
+    ring.style.transform = `translate(${rx}px,${ry}px) translate(-50%,-50%)`;
+    requestAnimationFrame(animRing);
+  })();
+  document.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('mouseenter', () => { ring.style.width='50px'; ring.style.height='50px'; ring.style.borderColor='#FFB800'; });
+    el.addEventListener('mouseleave', () => { ring.style.width='36px'; ring.style.height='36px'; ring.style.borderColor='rgba(0,201,167,0.6)'; });
+  });
+})();
+</script>
+
+<div id="claude-agent-glow-border" style="position: fixed; inset: 0px; pointer-events: none; z-index: 2147483646; opacity: 1; transition: opacity 0.3s ease-in-out;"><div id="claude-agent-glow-border-inner" style="position: absolute; inset: 0px; will-change: opacity; box-shadow: rgba(217, 119, 87, 0.7) 0px 0px 15px inset, rgba(217, 119, 87, 0.5) 0px 0px 25px inset, rgba(217, 119, 87, 0.2) 0px 0px 35px inset;"></div></div><div id="claude-phantom-cursor" aria-hidden="true" style="position: fixed; top: 0px; left: 0px; pointer-events: none; z-index: 2147483646; transform: translate3d(800px, 310px, 0px); transition: transform 180ms cubic-bezier(0.2, 0, 0, 1); will-change: transform;"><svg id="claude-phantom-cursor-plain" width="20" height="26" viewBox="0 0 20 26" style="position: absolute; top: 0px; left: 0px; overflow: visible;"><path d="M0 0 L0 18 L4.5 14 L7.5 21.5 L11 20 L8 13 L14 13 Z" stroke="white" stroke-width="3" stroke-linejoin="round" fill="white"></path><path d="M0 0 L0 18 L4.5 14 L7.5 21.5 L11 20 L8 13 L14 13 Z" fill="#111"></path></svg><svg id="claude-phantom-cursor-styled" width="20" height="26" viewBox="0 0 20 26" style="position: absolute; top: 0px; left: 0px; overflow: visible; filter: drop-shadow(rgba(217, 119, 87, 0.9) 0px 0px 4px) drop-shadow(rgba(217, 119, 87, 0.45) 0px 0px 10px);"><path d="M0 0 L0 18 L4.5 14 L7.5 21.5 L11 20 L8 13 L14 13 Z" stroke="#D97757" stroke-width="3" stroke-linejoin="round" fill="#D97757"></path><path d="M0 0 L0 18 L4.5 14 L7.5 21.5 L11 20 L8 13 L14 13 Z" fill="#FAF9F5"></path></svg></div></body></html>
