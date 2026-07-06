@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soluciones Interconet – Cancela y Mejora tu Plan</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<!-- GSAP + ScrollTrigger -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<style>
+  :root {
+    --bg: #050810;
+    --surface: #0d1220;
+    --card: #111827;
+    --border: rgba(99,179,237,0.12);
+    --cyan: #22d3ee;
+    --blue: #3b82f6;
+    --purple: #a855f7;
+    --white: #f0f6ff;
+    --muted: #7a8aa0;
+    --claro-red: #e8002d;
+    --movistar-green: #00b140;
+    --tigo-blue: #1a3fcc;
+    --wom-purple: #6b21a8;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* GRID BG */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      linear-gradient(rgba(34,211,238,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(34,211,238,0.03) 1px, transparent 1px);
+    background-size: 44px 44px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* GLOW ORBS */
+  .orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(90px);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .orb-1 { width: 700px; height: 700px; background: var(--cyan); top: -250px; left: -250px; opacity: 0.18; }
+  .orb-2 { width: 550px; height: 550px; background: var(--purple); bottom: -200px; right: -200px; opacity: 0.18; }
+  .orb-3 { width: 350px; height: 350px; background: var(--blue); top: 40%; left: 50%; transform: translate(-50%,-50%); opacity: 0.12; }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    background: rgba(5,8,16,0.88);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 40px;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  /* Nav logo: small pill */
+  .nav-logo-img-wrap {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: linear-gradient(135deg,#22d3ee,#3b82f6,#a855f7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .nav-logo-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .nav-logo-fallback {
+    font-family: 'Sora', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    color: #000;
+  }
+
+  .nav-brand {
+    font-family: 'Sora', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+  .nav-brand span { color: var(--cyan); }
+
+  .nav-cta {
+    background: linear-gradient(135deg, var(--cyan), var(--blue));
+    color: #000;
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 10px 22px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: opacity 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+  .nav-cta:hover { opacity: 0.85; transform: translateY(-1px); }
+
+  /* ── HERO PARALLAX SECTION ── */
+  .hero-parallax {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    height: 100vh;
+    min-height: 640px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Full-bleed logo behind text — this is the parallax image */
+  .hero-logo-bg {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 0;
+    will-change: transform;
+  }
+
+  .hero-logo-bg img {
+    width: min(700px, 90vw);
+    height: auto;
+    object-fit: contain;
+    opacity: 0.22;
+    filter: blur(0px) saturate(1.4) brightness(1.1);
+    transform-origin: center center;
+    will-change: transform, opacity;
+    transition: opacity 0.4s;
+  }
+
+  /* Fallback text logo when image not available */
+  .hero-logo-bg-fallback {
+    font-family: 'Sora', sans-serif;
+    font-weight: 800;
+    font-size: clamp(120px, 28vw, 280px);
+    letter-spacing: -0.05em;
+    background: linear-gradient(135deg, var(--cyan) 0%, var(--blue) 50%, var(--purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    opacity: 0.12;
+    line-height: 1;
+    user-select: none;
+    will-change: transform;
+  }
+
+  /* Overlay gradient so text stays readable */
+  .hero-parallax::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 50%, transparent 30%, var(--bg) 100%),
+      linear-gradient(to bottom, rgba(5,8,16,0.45) 0%, rgba(5,8,16,0.2) 40%, rgba(5,8,16,0.55) 100%);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* Hero content sits above logo */
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 0 20px;
+    max-width: 860px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(34,211,238,0.08);
+    border: 1px solid rgba(34,211,238,0.25);
+    color: var(--cyan);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 50px;
+    margin-bottom: 28px;
+  }
+  .hero-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--cyan);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.3; transform: scale(0.7); }
+  }
+
+  h1 {
+    font-family: 'Sora', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2.4rem, 6vw, 4.4rem);
+    line-height: 1.07;
+    letter-spacing: -0.03em;
+    margin-bottom: 22px;
+  }
+  h1 .accent {
+    background: linear-gradient(135deg, var(--cyan) 0%, var(--blue) 50%, var(--purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    color: var(--muted);
+    font-size: 1.1rem;
+    max-width: 520px;
+    margin: 0 auto 40px;
+    line-height: 1.7;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--cyan), var(--blue));
+    color: #000;
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 14px 32px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(34,211,238,0.35); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--white);
+    font-family: 'Sora', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 13px 30px;
+    border-radius: 50px;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--cyan); transform: translateY(-2px); }
+
+  /* Scroll cue */
+  .hero-scroll-cue {
+    position: absolute;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    color: var(--muted);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.6;
+  }
+  .scroll-arrow {
+    width: 24px; height: 24px;
+    border-right: 2px solid var(--muted);
+    border-bottom: 2px solid var(--muted);
+    transform: rotate(45deg);
+    animation: bounce 1.8s ease-in-out infinite;
+  }
+  @keyframes bounce {
+    0%,100% { transform: rotate(45deg) translateY(0); }
+    50% { transform: rotate(45deg) translateY(6px); }
+  }
+
+  /* ── STATS ── */
+  .stats {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    padding: 0 20px 70px;
+    flex-wrap: wrap;
+    border-top: 1px solid var(--border);
+    background: rgba(5,8,16,0.6);
+  }
+
+  .stat-item {
+    flex: 1;
+    min-width: 150px;
+    max-width: 200px;
+    text-align: center;
+    padding: 28px 20px;
+    border-right: 1px solid var(--border);
+  }
+  .stat-item:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: 'Sora', sans-serif;
+    font-weight: 800;
+    font-size: 2.2rem;
+    background: linear-gradient(135deg, var(--cyan), var(--blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .stat-label { color: var(--muted); font-size: 0.82rem; margin-top: 4px; }
+
+  /* ── SECTIONS ── */
+  section {
+    position: relative;
+    z-index: 1;
+    padding: 70px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    text-align: center;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Sora', sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.7rem, 4vw, 2.8rem);
+    text-align: center;
+    margin-bottom: 14px;
+    letter-spacing: -0.025em;
+  }
+
+  .section-sub {
+    text-align: center;
+    color: var(--muted);
+    max-width: 500px;
+    margin: 0 auto 52px;
+    line-height: 1.7;
+  }
+
+  /* ── STEPS ── */
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  .step-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 28px 24px;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .step-card:hover { transform: translateY(-4px); border-color: rgba(34,211,238,0.25); }
+
+  .step-num {
+    font-family: 'Sora', sans-serif;
+    font-weight: 800;
+    font-size: 3rem;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--cyan), var(--blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 14px;
+    opacity: 0.5;
+  }
+
+  .step-title {
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin-bottom: 8px;
+  }
+  .step-desc { color: var(--muted); font-size: 0.85rem; line-height: 1.65; }
+
+  /* ── OPERATOR CARDS ── */
+  .operators-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+
+  .operator-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 32px 28px;
+    cursor: pointer;
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .operator-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    transition: opacity 0.3s;
+    opacity: 1;
+  }
+  .operator-card:hover { transform: translateY(-6px); }
+
+  .operator-card.claro::before  { background: radial-gradient(circle at 50% 0%, rgba(232,0,45,0.1), transparent 70%); }
+  .operator-card.claro:hover    { border-color: var(--claro-red); box-shadow: 0 14px 44px rgba(232,0,45,0.22); }
+  .operator-card.movistar::before { background: radial-gradient(circle at 50% 0%, rgba(0,177,64,0.1), transparent 70%); }
+  .operator-card.movistar:hover   { border-color: var(--movistar-green); box-shadow: 0 14px 44px rgba(0,177,64,0.22); }
+  .operator-card.tigo::before   { background: radial-gradient(circle at 50% 0%, rgba(26,63,204,0.1), transparent 70%); }
+  .operator-card.tigo:hover     { border-color: var(--tigo-blue); box-shadow: 0 14px 44px rgba(26,63,204,0.22); }
+  .operator-card.wom::before    { background: radial-gradient(circle at 50% 0%, rgba(107,33,168,0.1), transparent 70%); }
+  .operator-card.wom:hover      { border-color: var(--wom-purple); box-shadow: 0 14px 44px rgba(107,33,168,0.22); }
+
+  .op-logo {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-family: 'Sora', sans-serif;
+    font-weight: 800;
+    font-size: 0.9rem;
+    letter-spacing: -0.01em;
+    position: relative;
+    z-index: 1;
+  }
+  .claro    .op-logo { background: rgba(232,0,45,0.15);   color: #ff3d5a; border: 1px solid rgba(232,0,45,0.3); }
+  .movistar .op-logo { background: rgba(0,177,64,0.15);   color: #00b140; border: 1px solid rgba(0,177,64,0.3); }
+  .tigo     .op-logo { background: rgba(26,63,204,0.15);  color: #3a5ff0; border: 1px solid rgba(26,63,204,0.3); }
+  .wom      .op-logo { background: rgba(107,33,168,0.15); color: #9b4dda; border: 1px solid rgba(107,33,168,0.3); }
+
+  .op-name {
+    font-family: 'Sora', sans-serif;
+    font-weight: 800;
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .op-desc {
+    color: var(--muted);
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .op-features {
+    list-style: none;
+    margin-bottom: 28px;
+    text-align: left;
+    position: relative;
+    z-index: 1;
+  }
+  .op-features li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.84rem;
+    color: var(--muted);
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .op-features li:last-child { border-bottom: none; }
+
+  .check {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.62rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .claro    .check { background: rgba(232,0,45,0.2);   color: #ff3d5a; }
+  .movistar .check { background: rgba(0,177,64,0.2);   color: #00b140; }
+  .tigo     .check { background: rgba(26,63,204,0.2);  color: #3a5ff0; }
+  .wom      .check { background: rgba(107,33,168,0.2); color: #9b4dda; }
+
+  .op-btn {
+    width: 100%;
+    padding: 13px;
+    border-radius: 50px;
+    border: none;
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 0.88rem;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .op-btn:hover { opacity: 0.88; transform: scale(1.02); }
+  .claro    .op-btn { background: var(--claro-red);      color: #fff; }
+  .movistar .op-btn { background: var(--movistar-green); color: #fff; }
+  .tigo     .op-btn { background: var(--tigo-blue);      color: #fff; }
+  .wom      .op-btn { background: var(--wom-purple);     color: #fff; }
+
+  /* ── MODAL ── */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.78);
+    backdrop-filter: blur(10px);
+    z-index: 300;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .modal-overlay.active { display: flex; }
+
+  .modal {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 44px 40px;
+    width: 100%;
+    max-width: 480px;
+    position: relative;
+    animation: slideUp 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(40px) scale(0.96); }
+    to   { opacity: 1; transform: translateY(0)    scale(1); }
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 16px; right: 16px;
+    background: rgba(255,255,255,0.06);
+    border: none;
+    color: var(--muted);
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s;
+  }
+  .modal-close:hover { background: rgba(255,255,255,0.13); color: var(--white); }
+
+  .modal-badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 50px;
+    margin-bottom: 16px;
+  }
+
+  .modal-title {
+    font-family: 'Sora', sans-serif;
+    font-weight: 800;
+    font-size: 1.65rem;
+    margin-bottom: 8px;
+    letter-spacing: -0.025em;
+  }
+
+  .modal-sub {
+    color: var(--muted);
+    font-size: 0.88rem;
+    margin-bottom: 28px;
+    line-height: 1.65;
+  }
+
+  .form-group { margin-bottom: 18px; }
+
+  .form-label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--muted);
+    margin-bottom: 7px;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+  }
+
+  .form-input, .form-select {
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 16px;
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .form-input::placeholder { color: rgba(122,138,160,0.55); }
+  .form-input:focus, .form-select:focus {
+    border-color: var(--cyan);
+    box-shadow: 0 0 0 3px rgba(34,211,238,0.1);
+  }
+  .form-select option { background: #1a2235; }
+
+  .form-submit {
+    width: 100%;
+    padding: 14px;
+    border-radius: 50px;
+    border: none;
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 8px;
+    background: linear-gradient(135deg, var(--cyan), var(--blue));
+    color: #000;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .form-submit:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(34,211,238,0.3); }
+
+  .success-state {
+    display: none;
+    text-align: center;
+    padding: 20px 0;
+  }
+  .success-icon {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--cyan), var(--blue));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 2rem;
+  }
+  .success-title {
+    font-family: 'Sora', sans-serif;
+    font-weight: 800;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  .success-sub { color: var(--muted); font-size: 0.9rem; line-height: 1.65; }
+
+  /* ── DIVIDER ── */
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--muted);
+    font-size: 0.82rem;
+    line-height: 1.8;
+  }
+  footer strong { color: var(--cyan); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    nav { padding: 12px 20px; }
+    .modal { padding: 32px 22px; }
+    .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
+    .stat-item:last-child { border-bottom: none; }
+    .hero-logo-bg img { width: 95vw; }
+  }
+</style>
+</head>
+<body>
+
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-img-wrap" id="nav-logo-wrap">
+      <img src="logo-interconet.jpeg" alt="Soluciones Interconet" id="nav-logo-img">
+    </div>
+    <div class="nav-brand">SOLUCIONES<br><span>INTERCONET</span></div>
+  </div>
+  <a href="#planes" class="nav-cta">Ver Planes →</a>
+</nav>
+
+<!-- ══ HERO CON PARALLAX ══ -->
+<div class="hero-parallax" id="hero-parallax">
+
+  <!-- Logo de fondo — elemento con parallax -->
+  <div class="hero-logo-bg" id="hero-logo-bg">
+    <img src="logo-interconet.jpeg" alt="" id="hero-bg-img">
+    <div class="hero-logo-bg-fallback" id="hero-bg-fallback" style="display:none;">SI</div>
+  </div>
+
+  <!-- Contenido encima -->
+  <div class="hero-content" id="hero-content">
+    <div class="hero-badge">Colombia · Telecomunicaciones · 4 Operadores</div>
+    <h1>¿Quieres cambiar<br>tu plan? <span class="accent">Nosotros<br>te ayudamos.</span></h1>
+    <p class="hero-sub">Cancelamos tu plan actual y te conectamos con la mejor oferta de Claro, Movistar, Tigo o WOM. Sin filas, sin llamadas eternas.</p>
+    <div class="hero-actions">
+      <a href="#planes" class="btn-primary">🚀 Cambiar de operador</a>
+      <a href="#como-funciona" class="btn-ghost">¿Cómo funciona?</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll-cue">
+    <span>scroll</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat-item">
+    <div class="stat-num">4</div>
+    <div class="stat-label">Operadores disponibles</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">100%</div>
+    <div class="stat-label">Digital y sin filas</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">24h</div>
+    <div class="stat-label">Respuesta garantizada</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">0</div>
+    <div class="stat-label">Costos ocultos</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- HOW IT WORKS -->
+<section id="como-funciona">
+  <div class="section-label">Proceso</div>
+  <h2 class="section-title">Así de fácil funciona</h2>
+  <p class="section-sub">En 3 pasos te ayudamos a salir de tu plan actual y empezar con el operador que prefieras.</p>
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-num">01</div>
+      <div class="step-title">Elige tu nuevo operador</div>
+      <div class="step-desc">Compara las tarjetas de Claro, Movistar, Tigo y WOM y elige la que más te conviene.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">02</div>
+      <div class="step-title">Llena el formulario</div>
+      <div class="step-desc">Ingresa tus datos básicos: nombre, cédula y celular. Solo toma 2 minutos.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">03</div>
+      <div class="step-title">Nosotros gestionamos todo</div>
+      <div class="step-desc">Un asesor de Soluciones Interconet te contacta y gestiona tu cambio de plan sin complicaciones.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">04</div>
+      <div class="step-title">Disfruta tu nuevo plan</div>
+      <div class="step-desc">Empieza a disfrutar mejor conectividad, precios y beneficios con tu nuevo operador.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- OPERATOR CARDS -->
+<section id="planes">
+  <div class="section-label">Operadores</div>
+  <h2 class="section-title">Elige tu operador ideal</h2>
+  <p class="section-sub">Haz clic en cualquier tarjeta para solicitar tu cambio de plan de forma rápida y sencilla.</p>
+
+  <div class="operators-grid">
+
+    <!-- CLARO -->
+    <div class="operator-card claro">
+      <div class="op-logo">CLARO</div>
+      <div class="op-name">Claro</div>
+      <div class="op-desc">La red más grande de Colombia con cobertura nacional y alta velocidad.</div>
+      <ul class="op-features">
+        <li><span class="check">✓</span> Cobertura en todo el país</li>
+        <li><span class="check">✓</span> Planes desde $25.000/mes</li>
+        <li><span class="check">✓</span> Internet + TV + Telefonía</li>
+        <li><span class="check">✓</span> Portabilidad numérica</li>
+      </ul>
+      <button class="op-btn" onclick="openModal('Claro','#e8002d')">Quiero pasarme a Claro →</button>
+    </div>
+
+    <!-- MOVISTAR -->
+    <div class="operator-card movistar">
+      <div class="op-logo">MOV</div>
+      <div class="op-name">Movistar</div>
+      <div class="op-desc">Tecnología 4G y fibra óptica con excelente servicio al cliente.</div>
+      <ul class="op-features">
+        <li><span class="check">✓</span> Red 4G LTE estable</li>
+        <li><span class="check">✓</span> Planes desde $30.000/mes</li>
+        <li><span class="check">✓</span> Fibra óptica disponible</li>
+        <li><span class="check">✓</span> Atención personalizada</li>
+      </ul>
+      <button class="op-btn" onclick="openModal('Movistar','#00b140')">Quiero pasarme a Movistar →</button>
+    </div>
+
+    <!-- TIGO -->
+    <div class="operator-card tigo">
+      <div class="op-logo">TIGO</div>
+      <div class="op-name">Tigo</div>
+      <div class="op-desc">Entretenimiento, velocidad y los mejores precios para tu hogar y móvil.</div>
+      <ul class="op-features">
+        <li><span class="check">✓</span> TV cable incluida</li>
+        <li><span class="check">✓</span> Planes desde $28.000/mes</li>
+        <li><span class="check">✓</span> Paquetes hogar completos</li>
+        <li><span class="check">✓</span> App Mi Tigo fácil de usar</li>
+      </ul>
+      <button class="op-btn" onclick="openModal('Tigo','#1a3fcc')">Quiero pasarme a Tigo →</button>
+    </div>
+
+    <!-- WOM -->
+    <div class="operator-card wom">
+      <div class="op-logo">WOM</div>
+      <div class="op-name">WOM</div>
+      <div class="op-desc">El operador que revoluciona los precios con datos ilimitados y sin sorpresas.</div>
+      <ul class="op-features">
+        <li><span class="check">✓</span> Datos ilimitados disponibles</li>
+        <li><span class="check">✓</span> Planes desde $20.000/mes</li>
+        <li><span class="check">✓</span> Sin permanencia forzada</li>
+        <li><span class="check">✓</span> 100% digital</li>
+      </ul>
+      <button class="op-btn" onclick="openModal('WOM','#6b21a8')">Quiero pasarme a WOM →</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 <strong>Soluciones Interconet</strong> · Bogotá, Colombia · Todos los derechos reservados</p>
+  <p>Distribuidor autorizado de planes móviles y fijos en Colombia</p>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModalOutside(event)">
+  <div class="modal" id="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+
+    <div id="form-state">
+      <div class="modal-badge" id="modal-badge">Operador</div>
+      <h3 class="modal-title" id="modal-title">Solicitar cambio de plan</h3>
+      <p class="modal-sub">Completa tus datos y un asesor de Soluciones Interconet te contactará a la brevedad.</p>
+
+      <div class="form-group">
+        <label class="form-label">Nombre completo *</label>
+        <input type="text" class="form-input" id="field-nombre" placeholder="Ej: Juan Carlos Rodríguez">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Número de cédula *</label>
+        <input type="number" class="form-input" id="field-cedula" placeholder="Ej: 1020304050">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Número de celular *</label>
+        <input type="tel" class="form-input" id="field-celular" placeholder="Ej: 3001234567" maxlength="10">
+      </div>
+      <div class="form-group">
+        <label class="form-label">¿A qué operador deseas pasarte? *</label>
+        <select class="form-select" id="field-operador">
+          <option value="">Selecciona un operador...</option>
+          <option value="Claro">📶 Claro</option>
+          <option value="Movistar">📶 Movistar</option>
+          <option value="Tigo">📶 Tigo</option>
+          <option value="WOM">📶 WOM</option>
+        </select>
+      </div>
+      <button class="form-submit" onclick="submitForm()">Enviar solicitud →</button>
+    </div>
+
+    <div class="success-state" id="success-state">
+      <div class="success-icon">✅</div>
+      <h3 class="success-title">¡Solicitud enviada!</h3>
+      <p class="success-sub">Gracias. Un asesor de <strong>Soluciones Interconet</strong> se comunicará contigo en las próximas horas para gestionar tu cambio de plan.</p>
+      <button class="form-submit" style="margin-top:24px;" onclick="closeModal()">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ══════════════════════════════════════════
+   LOGO — cargar desde uploads
+══════════════════════════════════════════ */
+(function () {
+  const SRC = '/mnt/user-data/uploads/WhatsApp_Image_2026-06-19_at_1_05_23_PM.jpeg';
+
+  function tryLoad(onSuccess) {
+    const probe = new Image();
+    probe.onload = () => onSuccess(probe.src);
+    probe.onerror = () => {}; // silently fail, fallback text stays
+    probe.src = SRC;
+  }
+
+  tryLoad(function (src) {
+    // Nav logo
+    const navImg      = document.getElementById('nav-logo-img');
+    const navFallback = document.getElementById('nav-logo-fallback');
+    if (navImg) {
+      navImg.src = src;
+      navImg.style.display = 'block';
+      if (navFallback) navFallback.style.display = 'none';
+    }
+
+    // Hero background logo
+    const heroBgImg      = document.getElementById('hero-bg-img');
+    const heroBgFallback = document.getElementById('hero-bg-fallback');
+    if (heroBgImg) {
+      heroBgImg.src = src;
+      heroBgImg.style.display = 'block';
+      if (heroBgFallback) heroBgFallback.style.display = 'none';
+    }
+  });
+})();
+
+/* ══════════════════════════════════════════
+   GSAP PARALLAX
+   – El logo de fondo se expande (scale)
+     y sube (y) suavemente al hacer scroll.
+   – El texto hero se desvanece y sube.
+══════════════════════════════════════════ */
+gsap.registerPlugin(ScrollTrigger);
+
+window.addEventListener('load', function () {
+
+  // 1. Logo BG: escala de 1 → 1.55 y sube mientras se scrollea
+  gsap.to('#hero-logo-bg', {
+    scale: 1.55,
+    y: -120,
+    opacity: 0,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '#hero-parallax',
+      start: 'top top',
+      end: 'bottom top',
+      scrub: 1.2,   // suavidad del scrub
+    }
+  });
+
+  // 2. Texto hero: sube y desvanece más rápido (efecto profundidad)
+  gsap.to('#hero-content', {
+    y: -80,
+    opacity: 0,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '#hero-parallax',
+      start: 'top top',
+      end: '60% top',
+      scrub: 0.8,
+    }
+  });
+
+  // 3. Entrada animada del hero al cargar (logo ya visible y crece levemente)
+  gsap.fromTo('#hero-logo-bg',
+    { scale: 0.88, opacity: 0 },
+    { scale: 1, opacity: 1, duration: 1.4, ease: 'expo.out', delay: 0.1 }
+  );
+
+  gsap.fromTo('#hero-content',
+    { y: 40, opacity: 0 },
+    { y: 0,  opacity: 1, duration: 1.1, ease: 'expo.out', delay: 0.3 }
+  );
+
+  // 4. Cards de operadores: aparecen con stagger al entrar en viewport
+  gsap.fromTo('.operator-card',
+    { y: 50, opacity: 0 },
+    {
+      y: 0, opacity: 1,
+      duration: 0.7,
+      stagger: 0.12,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '.operators-grid',
+        start: 'top 80%',
+      }
+    }
+  );
+
+  // 5. Step cards
+  gsap.fromTo('.step-card',
+    { y: 40, opacity: 0 },
+    {
+      y: 0, opacity: 1,
+      duration: 0.6,
+      stagger: 0.1,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '.steps-grid',
+        start: 'top 82%',
+      }
+    }
+  );
+
+  // 6. Stats counter
+  gsap.fromTo('.stat-item',
+    { y: 20, opacity: 0 },
+    {
+      y: 0, opacity: 1,
+      duration: 0.5,
+      stagger: 0.08,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: '.stats',
+        start: 'top 90%',
+      }
+    }
+  );
+
+});
+
+/* ══════════════════════════════════════════
+   MODAL
+══════════════════════════════════════════ */
+function openModal(operator, color) {
+  const badge   = document.getElementById('modal-badge');
+  const title   = document.getElementById('modal-title');
+  const select  = document.getElementById('field-operador');
+  const overlay = document.getElementById('modal-overlay');
+
+  badge.textContent    = '📶 ' + operator;
+  badge.style.background = color + '22';
+  badge.style.color      = color;
+  badge.style.border     = '1px solid ' + color + '44';
+  title.textContent      = 'Pasarme a ' + operator;
+  select.value           = operator;
+
+  document.getElementById('form-state').style.display   = 'block';
+  document.getElementById('success-state').style.display = 'none';
+  overlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modal-overlay').classList.remove('active');
+  document.body.style.overflow = '';
+  setTimeout(() => {
+    ['field-nombre','field-cedula','field-celular'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('field-operador').value = '';
+    document.getElementById('form-state').style.display   = 'block';
+    document.getElementById('success-state').style.display = 'none';
+  }, 300);
+}
+
+function closeModalOutside(e) {
+  if (e.target === document.getElementById('modal-overlay')) closeModal();
+}
+
+function submitForm() {
+  const nombre   = document.getElementById('field-nombre').value.trim();
+  const cedula   = document.getElementById('field-cedula').value.trim();
+  const celular  = document.getElemententById('field-celular').value.trim();
+  const operador = document.getElementById('field-operador').value;
+  if (!nombre || !cedula || !celular || !operador) {
+    alert('Por favor completa todos los campos para continuar.');
+    return;
+  }
+  if (celular.length < 10) {
+    alert('Por favor ingresa un número de celular válido de 10 dígitos.');
+    return;
+  }
+  document.getElementById('form-state').style.display   = 'none';
+  document.getElementById('success-state').style.display = 'block';
+}
+
+/* Smooth scroll */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+</script>
+<!-- Custom cursor -->
+<style>
+* { cursor: none !important; }
+#cursor-dot, #cursor-ring {
+  position: fixed; top: 0; left: 0; pointer-events: none; z-index: 99999; border-radius: 50%;
+}
+#cursor-dot { width: 8px; height: 8px; background: #00C9A7; transform: translate(-50%,-50%); }
+#cursor-ring { width: 36px; height: 36px; border: 2px solid rgba(0,201,167,0.6); transform: translate(-50%,-50%); }
+</style>
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+<script>
+(function(){
+  const dot = document.getElementById('cursor-dot');
+  const ring = document.getElementById('cursor-ring');
+  let mx=0, my=0, rx=0, ry=0;
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    dot.style.transform = `translate(${mx}px,${my}px) translate(-50%,-50%)`;
+  });
+  (function animRing(){
+    rx += (mx-rx)*.12; ry += (my-ry)*.12;
+    ring.style.transform = `translate(${rx}px,${ry}px) translate(-50%,-50%)`;
+    requestAnimationFrame(animRing);
+  })();
+  document.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('mouseenter', () => { ring.style.width='50px'; ring.style.height='50px'; ring.style.borderColor='#FFB800'; });
+    el.addEventListener('mouseleave', () => { ring.style.width='36px'; ring.style.height='36px'; ring.style.borderColor='rgba(0,201,167,0.6)'; });
+  });
+})();
+</script>
+</body>
+</html>
