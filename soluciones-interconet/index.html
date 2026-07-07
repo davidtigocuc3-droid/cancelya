@@ -1178,26 +1178,6 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 </script>
-<!-- Custom cursor -->
-<style>
-* { cursor: none !important; }
-#cursor-dot, #cursor-ring {
-  position: fixed; top: 0; left: 0; pointer-events: none; z-index: 99999; border-radius: 50%;
-}
-#cursor-dot { width: 8px; height: 8px; background: #00C9A7; transform: translate(-50%,-50%); }
-#cursor-ring { width: 36px; height: 36px; border: 2px solid rgba(0,201,167,0.6); transform: translate(-50%,-50%); }
-</style>
-<div id="cursor-dot"></div>
-<div id="cursor-ring"></div>
-<script>
-(function(){
-  const dot = document.getElementById('cursor-dot');
-  const ring = document.getElementById('cursor-ring');
-  let mx=0, my=0, rx=0, ry=0;
-  document.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
-    dot.style.transform = `translate(${mx}px,${my}px) translate(-50%,-50%)`;
-  });
-  (function animRing(){
-    rx += (mx-rx)*.12; ry += (my-ry)*.12;
-    ring.style.transform 
+</body>
+</html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
